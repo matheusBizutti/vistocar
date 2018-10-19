@@ -1,0 +1,7 @@
+{
+  "name": "vistocar_inspect",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

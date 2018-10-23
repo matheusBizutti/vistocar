@@ -1,11 +1,40 @@
 <ion-content padding>
-  <span class="thf-icon thf-icon-logo-totvs"></span>
-  mock scope
-  <button
-    ion-button
-    block
-    color="secondary"
-    (click)="navigateTo()">
-    Get In Touch
-  </button>
+
+  <div padding-top>
+
+    <ion-row>
+      <ion-col>
+        <div padding-top>
+          <ion-img width="200" height="200" src="./../../assets/imgs/logo_vistocar.jpeg" alt="logo-vistocar"></ion-img>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-list no-padding>
+
+          <ion-item no-padding>
+            <ion-input type="text" placeholder="Email" name="email" [(ngModel)]="credentials.username"></ion-input>
+          </ion-item>
+
+          <ion-item no-padding>
+            <ion-input type="password" placeholder="Password" name="password" [(ngModel)]="credentials.password"></ion-input>
+          </ion-item>
+
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+    <div padding-top>
+      <button
+        ion-button
+        block
+        color="secondary"
+        (click)="login()">
+        Entrar
+      </button>
+    </div>
+
+  </div>
 </ion-content>

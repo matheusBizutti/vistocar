@@ -7,11 +7,16 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
+  credentials = {
+    password: '',
+    username: ''
+  }
+
   constructor(public navCtrl: NavController) {
 
   }
 
-  navigateTo() {
+  login() {
     this.navCtrl.push('about');
   }
 

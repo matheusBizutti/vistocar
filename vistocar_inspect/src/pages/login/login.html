@@ -1,0 +1,40 @@
+<ion-content padding>
+
+  <div padding-top>
+
+    <ion-row>
+      <ion-col>
+        <div padding-top class="image-center">
+          <ion-img width="200" height="200" src="./../../assets/imgs/logo-vistocar.jpg" alt="logo-vistocar"></ion-img>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-list no-padding>
+
+          <ion-item no-padding>
+            <ion-input type="text" placeholder="Email" name="email" [(ngModel)]="credentials.username"></ion-input>
+          </ion-item>
+
+          <ion-item no-padding>
+            <ion-input type="password" placeholder="Senha" name="password" [(ngModel)]="credentials.password"></ion-input>
+          </ion-item>
+
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+    <div padding-top>
+      <button
+        ion-button
+        block
+        color="secondary"
+        (click)="login()">
+        Entrar
+      </button>
+    </div>
+
+  </div>
+</ion-content>

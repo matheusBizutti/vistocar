@@ -1,40 +1,57 @@
+<!--
+  Generated template for the HomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar hideBackButton>
+    <ion-title>vistocar</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
 <ion-content padding>
 
-  <div padding-top>
+  <ion-row>
+    <ion-col>
+      <ion-card>
+        <ion-card-header>
+          VISTORIAS
+        </ion-card-header>
+        <ion-card-content>
+          Efetuar nova vistoria
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
 
-    <ion-row>
-      <ion-col>
-        <div padding-top>
-          <ion-img width="200" height="200" src="./../../assets/imgs/logo_vistocar.jpeg" alt="logo-vistocar"></ion-img>
-        </div>
-      </ion-col>
-    </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-card padding-top>
+        <ion-card-header>
+          CONSULTAR
+        </ion-card-header>
+        <ion-card-content>
+          Consultar vistoria / transmissão
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
 
-    <ion-row>
-      <ion-col>
-        <ion-list no-padding>
+  <ion-row>
+    <ion-col>
+      <ion-card padding-top>
+        <ion-card-header>
+          CONSULTAR
+        </ion-card-header>
+        <ion-card-content>
+          Efetuar nova vistoria
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
 
-          <ion-item no-padding>
-            <ion-input type="text" placeholder="Email" name="email" [(ngModel)]="credentials.username"></ion-input>
-          </ion-item>
-
-          <ion-item no-padding>
-            <ion-input type="password" placeholder="Password" name="password" [(ngModel)]="credentials.password"></ion-input>
-          </ion-item>
-
-        </ion-list>
-      </ion-col>
-    </ion-row>
-
-    <div padding-top>
-      <button
-        ion-button
-        block
-        color="secondary"
-        (click)="login()">
-        Entrar
-      </button>
-    </div>
-
-  </div>
 </ion-content>

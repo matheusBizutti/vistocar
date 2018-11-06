@@ -31,6 +31,7 @@
         ion-button
         block
         color="secondary"
+        [disabled]="!credentials.username || !credentials.password"
         (click)="login()">
         Entrar
       </button>

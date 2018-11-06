@@ -8,6 +8,11 @@
 
   <ion-navbar hideBackButton>
     <ion-title>vistocar</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="exit()">
+        Sair <ion-icon ios="ios-exit-outline" md="md-exit"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -48,7 +53,7 @@
           CONSULTAR
         </ion-card-header>
         <ion-card-content>
-          Efetuar nova vistoria
+          Agendamentos
         </ion-card-content>
       </ion-card>
     </ion-col>

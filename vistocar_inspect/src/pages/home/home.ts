@@ -12,7 +12,15 @@ export class HomePage {
 
   constructor(public navCtrl: NavController) {}
 
-  exit( ){
+  consultInspect() {
+    this.navCtrl.push('consult-inspect');
+  }
+
+  consultSchedules() {
+    this.navCtrl.push('consult-schedules');
+  }
+
+  exit( ) {
     this.navCtrl.push('login');
   }
 

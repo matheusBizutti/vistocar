@@ -1,0 +1,62 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Agendamentos</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-card padding-bottom>
+    <ion-item>
+      <ion-label color="primary" stacked>Placa</ion-label>
+      <ion-input type="text" placeholder="JXS-0701" name="board"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" stacked>Chassi</ion-label>
+      <ion-input type="text" placeholder="9BWZZZ377VT004251" name="chassi"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Aberto</ion-label>
+      <ion-checkbox checked="true"></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Fechado</ion-label>
+      <ion-checkbox checked="false"></ion-checkbox>
+    </ion-item>
+
+    <div padding>
+      <button
+        ion-button
+        block
+        large
+        color="secondary">
+        Filtrar
+      </button>
+    </div>
+
+  </ion-card>
+
+  <ion-card padding-top>
+    <ion-item>
+      <label>Placa: <strong>XJS-0701</strong></label>
+    </ion-item>
+    <ion-item>
+      <label>Tipo da vistoria: <strong>A</strong></label>
+    </ion-item>
+    <ion-item>
+      <label>Status dos dados: <strong>Transmitidos</strong></label>
+    </ion-item>
+    <ion-item>
+      <label>Status da imagem: <strong>Transmitida</strong></label>
+    </ion-item>
+    <ion-item>
+      <label>Cliente: <strong>MultiCar S/A</strong></label>
+    </ion-item>
+  </ion-card>
+</ion-content>

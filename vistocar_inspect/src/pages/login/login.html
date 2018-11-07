@@ -15,11 +15,23 @@
         <ion-list no-padding>
 
           <ion-item no-padding>
-            <ion-input type="text" placeholder="Email" name="email" [(ngModel)]="credentials.username"></ion-input>
+            <ion-input
+              class="font-default"
+              type="text"
+              placeholder="Email"
+              name="email"
+              [(ngModel)]="credentials.username">
+            </ion-input>
           </ion-item>
 
           <ion-item no-padding>
-            <ion-input type="password" placeholder="Senha" name="password" [(ngModel)]="credentials.password"></ion-input>
+            <ion-input
+              class="font-default"
+              type="password"
+              placeholder="Senha"
+              name="password"
+              [(ngModel)]="credentials.password">
+            </ion-input>
           </ion-item>
 
         </ion-list>
@@ -30,6 +42,7 @@
       <button
         ion-button
         block
+        large
         color="secondary"
         [disabled]="!credentials.username || !credentials.password"
         (click)="login()">

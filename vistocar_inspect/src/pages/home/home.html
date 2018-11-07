@@ -7,10 +7,13 @@
 <ion-header>
 
   <ion-navbar hideBackButton>
-    <ion-title>vistocar</ion-title>
+    <ion-title>VISTOCAR</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="exit()">
-        Sair <ion-icon ios="ios-exit-outline" md="md-exit"></ion-icon>
+        <div padding-right>
+          Sair
+        </div>
+        <ion-icon ios="ios-exit-outline" md="md-exit"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -28,6 +31,7 @@
         </ion-card-header>
         <ion-card-content>
           Efetuar nova vistoria
+          <ion-icon name="add"></ion-icon>
         </ion-card-content>
       </ion-card>
     </ion-col>
@@ -35,12 +39,13 @@
 
   <ion-row>
     <ion-col>
-      <ion-card padding-top>
+      <ion-card padding-top (click)="consultInspect();">
         <ion-card-header>
           CONSULTAR
         </ion-card-header>
         <ion-card-content>
           Consultar vistoria / transmissão
+          <ion-icon name="search"></ion-icon>
         </ion-card-content>
       </ion-card>
     </ion-col>
@@ -48,12 +53,13 @@
 
   <ion-row>
     <ion-col>
-      <ion-card padding-top>
+      <ion-card padding-top (click)="consultSchedules();">
         <ion-card-header>
-          CONSULTAR
+          AGENDAMENTOS
         </ion-card-header>
         <ion-card-content>
-          Agendamentos
+          Visualizar
+          <ion-icon name="search"></ion-icon>
         </ion-card-content>
       </ion-card>
     </ion-col>

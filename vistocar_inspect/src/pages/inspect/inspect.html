@@ -1,0 +1,76 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Nova vistoria</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content no-padding>
+
+  <ion-stepper #stepper (selectIndexChange)="selectChange($event)" mode="vertical">
+
+    <ion-step label="Veículo" description="">
+      <h2>Step1 Content</h2>
+      <p>Step1 Content</p>
+      <button ion-button small ionicStepperNext>Próximo</button>
+    </ion-step>
+
+    <ion-step label="Ressalvas" description="Step1 description">
+
+      <button ion-button small ionicStepperNext>Próximo</button>
+      <button ion-button color="light" small ionicStepperPrevious>Voltar</button>
+
+      <h2>Step2 Content</h2>
+      <p>Step2 Content</p>
+      <h2>Step2 Content</h2>
+      <p>Step2 Content</p>
+      <h2>Step2 Content</h2>
+      <p>Step2 Content</p>
+      <h2>Step2 Content</h2>
+      <p>Step2 Content</p>
+      <h2>Step2 Content</h2>
+      <p>Step2 Content</p>
+      <h2>Step2 Content</h2>
+      <p>Step2 Content</p>
+      <h2>Step2 Content</h2>
+      <p>Step2 Content</p>
+      <h2>Step2 Content</h2>
+      <p>Step2 Content</p>
+    </ion-step>
+
+    <ion-step label="Fotos" description="">
+
+      <button ion-button small ionicStepperNext>Próximo</button>
+      <button ion-button color="light" small ionicStepperPrevious>Voltar</button>
+
+      <h2>Step3 Content</h2>
+      <p>Step3 Content</p>
+      <h2>Step3 Content</h2>
+      <p>Step3 Content</p>
+      <h2>Step3 Content</h2>
+      <p>Step3 Content</p>
+      <h2>Step3 Content</h2>
+      <p>Step3 Content</p>
+      <h2>Step3 Content</h2>
+      <p>Step3 Content</p>
+      <h2>Step3 Content</h2>
+      <p>Step3 Content</p>
+      <h2>Step3 Content</h2>
+      <p>Step3 Content</p>
+      <h2>Step3 Content</h2>
+      <p>Step3 Content</p>
+      <h2>Step3 Content</h2>
+      <p>Step3 Content</p>
+      <h2>Step3 Content</h2>
+      <p>Step3 Content</p>
+    </ion-step>
+
+    <ion-step label="Finalizar" description="">
+      <h2>Step4 Content</h2>
+      <p>Step4 Content</p>
+      <button ion-button color="light" small ionicStepperPrevious>Voltar</button>
+    </ion-step>
+  </ion-stepper>
+
+</ion-content>

@@ -25,7 +25,7 @@
 
   <ion-row>
     <ion-col>
-      <ion-card>
+      <ion-card (click)="newInspect();">
         <ion-card-header>
           <label>VISTORIAS</label>
         </ion-card-header>
@@ -57,10 +57,46 @@
         </ion-card-header>
         <ion-card-content>
           <label class="color-primary">Visualizar</label>
-          <ion-icon name="search"></ion-icon>
         </ion-card-content>
       </ion-card>
     </ion-col>
   </ion-row>
+
+  <!-- Segment buttons with text -->
+  <!-- <ion-segment [(ngModel)]="inspect" color="primary">
+
+    <ion-segment-button value="vehicle">
+      Veículo
+    </ion-segment-button>
+    <ion-segment-button value="caveat">
+      Ressalvas
+    </ion-segment-button>
+    <ion-segment-button value="pictures">
+      Fotos
+    </ion-segment-button>
+    <ion-segment-button value="end">
+      Finalizar
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="inspect">
+
+    <div *ngSwitchCase="'vehicle'">
+      VEICULO
+    </div>
+
+    <div *ngSwitchCase="'caveat'">
+      CAVEAT
+    </div>
+
+    <div *ngSwitchCase="'pictures'">
+      PICTURES
+    </div>
+
+    <div *ngSwitchCase="'end'">
+      END
+    </div>
+
+  </div> -->
 
 </ion-content>

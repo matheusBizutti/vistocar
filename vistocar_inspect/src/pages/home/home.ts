@@ -10,6 +10,8 @@ import { NavController, IonicPage } from 'ionic-angular';
 })
 export class HomePage {
 
+  // inspect: string;
+
   constructor(public navCtrl: NavController) {}
 
   consultInspect() {
@@ -22,6 +24,10 @@ export class HomePage {
 
   exit( ) {
     this.navCtrl.push('login');
+  }
+
+  newInspect() {
+    this.navCtrl.push('inspect');
   }
 
 }

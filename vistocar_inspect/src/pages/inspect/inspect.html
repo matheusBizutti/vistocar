@@ -6,71 +6,270 @@
 
 </ion-header>
 
-<ion-content no-padding>
+<ion-content padding>
 
-  <ion-stepper #stepper (selectIndexChange)="selectChange($event)" mode="vertical">
+  <div [ngSwitch]="inspect">
 
-    <ion-step label="Veículo" description="">
-      <h2>Step1 Content</h2>
-      <p>Step1 Content</p>
-      <button ion-button small ionicStepperNext>Próximo</button>
-    </ion-step>
+    <div *ngSwitchCase="'vehicle'">
+      <ion-item no-padding>
+        <ion-label stacked>Cliente</ion-label>
+        <ion-select [(ngModel)]="inspectData.customer">
+          <ion-option value="01">Cliente01</ion-option>
+          <ion-option value="02">Cliente 02</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-row>
+        <ion-col>
+          <ion-item no-padding>
+            <ion-label stacked>Leilão</ion-label>
+            <ion-select [(ngModel)]="inspectData.auction">
+              <ion-option value="01">APL01</ion-option>
+              <ion-option value="02">APL02</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item no-padding>
+            <ion-label stacked>Nr. lote</ion-label>
+            <ion-input [(ngModel)]="inspectData.lotNumber" type="number"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item no-padding>
+            <ion-label stacked>Tipo vistoria</ion-label>
+            <ion-select [(ngModel)]="inspectData.surveyType">
+              <ion-option value="Aprovado">Aprovado</ion-option>
+              <ion-option value="Aprovado com restrição">Aprovado com restrição</ion-option>
+              <ion-option value="Reprovado">Reprovado</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item no-padding>
+            <ion-label stacked>Categoria veiculo</ion-label>
+            <ion-select [(ngModel)]="inspectData.vehiclecategory">
+              <ion-option value="selecione">Selecione</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-item no-padding>
+          <ion-label stacked>Tipo serviço / tipo veículo</ion-label>
+          <ion-select [(ngModel)]="inspectData.vehiclecategory">
+            <ion-option value="Automovel">Automovel</ion-option>
+            <ion-option value="Caminhão">Caminhão</ion-option>
+            <ion-option value="Motocicleta">Motocicleta</ion-option>
+            <ion-option value="Ciclomoto">Ciclomoto</ion-option>
+            <ion-option value="Motoneta">Motoneta</ion-option>
+            <ion-option value="Camioneta">Camioneta</ion-option>
+            <ion-option value="Utilitario">Utilitario</ion-option>
+            <ion-option value="Micro ônibus">Micro ônibus</ion-option>
+            <ion-option value="Triciclo">Triciclo</ion-option>
+            <ion-option value="Caminhão trator">Caminhão trator</ion-option>
+            <ion-option value="Sucata não idêntificada">Sucata não idêntificada</ion-option>
+            <ion-option value="Inexistente">Inexistente</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item no-padding>
+            <ion-label stacked>Condição da placa</ion-label>
+            <ion-select [(ngModel)]="inspectData.boardcondition">
+              <ion-option value="Lacre da placa violado">Lacre da placa violado</ion-option>
+              <ion-option value="Placa - caracteres dentro dos padrões originais">Placa - caracteres dentro dos padrões originais</ion-option>
+              <ion-option value="Placa quebrada">Placa quebrada</ion-option>
+              <ion-option value="Sem placa">Sem placa</ion-option>
+              <ion-option value="Tarjeta da placa divergente">Tarjeta da placa divergente</ion-option>
+              <ion-option value="Veículo de primeiro emplacamento">Veículo de primeiro emplacamento</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item no-padding>
+            <ion-label stacked>Placa</ion-label>
+            <ion-input [(ngModel)]="inspectData.board" type="text" pattern="/[a-z]{3}-?\d{4}/"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item no-padding>
+            <ion-label stacked>UF Placa</ion-label>
+            <ion-select [(ngModel)]="inspectData.ufboard">
+              <ion-option value="SP">SP</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item no-padding>
+            <ion-label stacked>Cidade placa</ion-label>
+            <ion-input [(ngModel)]="inspectData.cityboard" type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item no-padding>
+            <ion-label stacked>Nr. motor</ion-label>
+            <ion-input [(ngModel)]="inspectData.motornumber" type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item no-padding>
+            <ion-label stacked>Nr. motor BIN</ion-label>
+            <ion-input [(ngModel)]="inspectData.motornumberbin" type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-item no-padding>
+          <ion-label stacked>Condição do motor</ion-label>
+          <ion-select [(ngModel)]="inspectData.motorcondition">
+            <ion-option value="colocar as opções">colocar as opções</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item no-padding>
+            <ion-label stacked>Nr. chassi</ion-label>
+            <ion-input [(ngModel)]="inspectData.chassinumber" type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item no-padding>
+            <ion-label stacked>Nr. chassi BIN</ion-label>
+            <ion-input [(ngModel)]="inspectData.chassinumberbin" type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-item no-padding>
+          <ion-label stacked>Condição do chassi</ion-label>
+          <ion-select [(ngModel)]="inspectData.chassicondition">
+            <ion-option value="colocar as opções">colocar as opções</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item no-padding>
+            <ion-label stacked>Nr. câmbio</ion-label>
+            <ion-input [(ngModel)]="inspectData.exchangenumber" type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item no-padding>
+            <ion-label stacked>Nr. câmbio BIN</ion-label>
+            <ion-input [(ngModel)]="inspectData.exchangenumberbin" type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item no-padding>
+            <ion-label stacked>Nr. Renavam</ion-label>
+            <ion-input [(ngModel)]="inspectData.renavamnumber" type="number"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row radio-group [(ngModel)]="inspectData.kitgnv">
+        <ion-col>
+          <ion-item no-padding>
+            <ion-label>Kit GNV</ion-label>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label>Sim</ion-label>
+            <ion-radio value="true"></ion-radio>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label>Não</ion-label>
+            <ion-radio value="false"></ion-radio>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-item no-padding>
+          <ion-label stacked>Marca veículo</ion-label>
+          <ion-input [(ngModel)]="inspectData.vehiclebrand" type="text"></ion-input>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-item no-padding>
+          <ion-label stacked>Modelo veículo</ion-label>
+          <ion-input [(ngModel)]="inspectData.vehiclemodel" type="text"></ion-input>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item no-padding>
+            <ion-label stacked>Ano modelo</ion-label>
+            <ion-input [(ngModel)]="inspectData.yearmodel" type="number"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item no-padding>
+            <ion-label stacked>Ano fabricação</ion-label>
+            <ion-input max-lenght="4" [(ngModel)]="inspectData.yearfabrication" type="number"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-item no-padding>
+          <ion-label stacked>Cor</ion-label>
+          <ion-select [(ngModel)]="inspectData.color">
+            <ion-option value="colocar as opções">colocar as opções</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-item no-padding>
+          <ion-label stacked>Combústivel</ion-label>
+          <ion-select [(ngModel)]="inspectData.fuel">
+            <ion-option value="colocar as opções">colocar as opções</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-textarea placeholder="Observações"></ion-textarea>
+      </ion-row>
+      <ion-row padding-top>
+        <button ion-button block large (click)="navigate();">Próximo</button>
+      </ion-row>
+    </div>
 
-    <ion-step label="Ressalvas" description="Step1 description">
+    <div *ngSwitchCase="'caveat'">
+      CAVEAT
+      {{ inspect }}
+      <ion-row>
+        <button ion-button block large color="light" (click)="back();">Voltar</button>
+        <button ion-button block large (click)="navigate();">Próximo</button>
+      </ion-row>
+    </div>
 
-      <button ion-button small ionicStepperNext>Próximo</button>
-      <button ion-button color="light" small ionicStepperPrevious>Voltar</button>
+    <div *ngSwitchCase="'pictures'">
+      PICTURES
+      {{ inspect }}
+      <ion-row>
+          <button ion-button block large color="light" (click)="back();">Voltar</button>
+          <button ion-button block large (click)="navigate();">Próximo</button>
+      </ion-row>
+    </div>
 
-      <h2>Step2 Content</h2>
-      <p>Step2 Content</p>
-      <h2>Step2 Content</h2>
-      <p>Step2 Content</p>
-      <h2>Step2 Content</h2>
-      <p>Step2 Content</p>
-      <h2>Step2 Content</h2>
-      <p>Step2 Content</p>
-      <h2>Step2 Content</h2>
-      <p>Step2 Content</p>
-      <h2>Step2 Content</h2>
-      <p>Step2 Content</p>
-      <h2>Step2 Content</h2>
-      <p>Step2 Content</p>
-      <h2>Step2 Content</h2>
-      <p>Step2 Content</p>
-    </ion-step>
+    <div *ngSwitchCase="'end'">
+      END
+      <ion-row>
+        <button ion-button color="light" block large (click)="back();">Voltar</button>
+      </ion-row>
+    </div>
 
-    <ion-step label="Fotos" description="">
-
-      <button ion-button small ionicStepperNext>Próximo</button>
-      <button ion-button color="light" small ionicStepperPrevious>Voltar</button>
-
-      <h2>Step3 Content</h2>
-      <p>Step3 Content</p>
-      <h2>Step3 Content</h2>
-      <p>Step3 Content</p>
-      <h2>Step3 Content</h2>
-      <p>Step3 Content</p>
-      <h2>Step3 Content</h2>
-      <p>Step3 Content</p>
-      <h2>Step3 Content</h2>
-      <p>Step3 Content</p>
-      <h2>Step3 Content</h2>
-      <p>Step3 Content</p>
-      <h2>Step3 Content</h2>
-      <p>Step3 Content</p>
-      <h2>Step3 Content</h2>
-      <p>Step3 Content</p>
-      <h2>Step3 Content</h2>
-      <p>Step3 Content</p>
-      <h2>Step3 Content</h2>
-      <p>Step3 Content</p>
-    </ion-step>
-
-    <ion-step label="Finalizar" description="">
-      <h2>Step4 Content</h2>
-      <p>Step4 Content</p>
-      <button ion-button color="light" small ionicStepperPrevious>Voltar</button>
-    </ion-step>
-  </ion-stepper>
-
+  </div>
 </ion-content>

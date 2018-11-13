@@ -17,10 +17,83 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class InspectPage {
 
+  inspect = 'vehicle';
+  inspectData = {
+    customer: '',
+    auction: '',
+    lotNumber: undefined ,
+    surveyType: '',
+    vehiclecategory: '',
+    servicetype: '',
+    boardcondition: '',
+    board: '',
+    ufboard: '',
+    cityboard: '',
+    motornumber: '',
+    motornumberbin: '',
+    motorcondition: '',
+    chassinumber: '',
+    chassinumberbin: '',
+    chassicondition: '',
+    exchangenumber: '',
+    exchangenumberbin: '',
+    renavamnumber: undefined,
+    kitgnv: false,
+    vehiclebrand: '',
+    vehiclemodel: '',
+    yearmodel: undefined,
+    yearfabrication: undefined,
+    color: '',
+    fuel: '',
+    observation: ''
+  }
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad InspectPage');
+  }
+
+  navigate() {
+    switch(this.inspect) {
+      case 'vehicle': {
+        this.inspect = 'caveat';
+        break;
+      }
+      case 'caveat': {
+        this.inspect = 'pictures';
+        break;
+      }
+      case 'pictures': {
+        this.inspect = 'end';
+        break;
+      }
+      default: {
+        this.inspect = 'vehicle';
+        break;
+      }
+    }
+  }
+
+  back() {
+    switch(this.inspect) {
+      case 'caveat': {
+        this.inspect = 'vehicle';
+        break;
+      }
+      case 'pictures': {
+        this.inspect = 'caveat';
+        break;
+      }
+      case 'end': {
+        this.inspect = 'pictures';
+        break;
+      }
+      default: {
+        this.inspect = 'vehicle';
+        break;
+      }
+    }
   }
 
   selectChange(e) {

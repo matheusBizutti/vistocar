@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ErrorHandler, NgModule } from '@angular/core';
 
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -12,8 +11,6 @@ import { MyApp } from './app.component';
 import { LoginPageModule } from '../pages/login/login.module';
 import { ConsultInspectPageModule } from '../pages/consult-inspect/consult-inspect.module';
 
-import { IonicStepperModule } from 'ionic-stepper';
-
 @NgModule({
   declarations: [
     MyApp
@@ -23,10 +20,7 @@ import { IonicStepperModule } from 'ionic-stepper';
     CommonModule,
     FormsModule,
     BrowserModule,
-    BrowserAnimationsModule,
-    NoopAnimationsModule,
     IonicModule.forRoot(MyApp),
-    IonicStepperModule,
     ConsultInspectPageModule
   ],
   bootstrap: [IonicApp],

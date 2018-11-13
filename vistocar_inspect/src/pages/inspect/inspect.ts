@@ -18,6 +18,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class InspectPage {
 
   inspect = 'vehicle';
+
+  checkbox01 = false;
+  checkbox02 = false;
+  checkbox03 = false;
+  checkbox04 = false;
+
   inspectData = {
     customer: '',
     auction: '',
@@ -45,7 +51,25 @@ export class InspectPage {
     yearfabrication: undefined,
     color: '',
     fuel: '',
-    observation: ''
+    observation: '',
+    caveat: [
+    {
+      description: 'Ausência de gravação em todos os vidros',
+      use: this.checkbox01
+    },
+    {
+      description: 'Ausência parcial de numeração nos vidros',
+      use: this.checkbox02
+    },
+    {
+      description: 'Veículo blindado',
+      use: this.checkbox03
+    },
+    {
+      description: 'Vidro com num. do chassi sem vestígio de adulteração',
+      use: this.checkbox04
+    }
+  ]
   }
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}

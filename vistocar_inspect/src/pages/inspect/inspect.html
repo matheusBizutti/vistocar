@@ -247,8 +247,31 @@
     </div>
 
     <div *ngSwitchCase="'caveat'">
-      CAVEAT
-      {{ inspect }}
+
+      <ion-list>
+
+        <ion-item no-padding>
+          <ion-label stacked>Ausência de gravação em todos os vidros</ion-label>
+          <ion-checkbox [(ngModel)]="checkbox01"></ion-checkbox>
+        </ion-item>
+
+        <ion-item no-padding>
+          <ion-label stacked>Ausência parcial de numeração nos vidros</ion-label>
+          <ion-checkbox [(ngModel)]="checkbox02"></ion-checkbox>
+        </ion-item>
+
+        <ion-item no-padding>
+          <ion-label stacked>Veículo blindado</ion-label>
+          <ion-checkbox [(ngModel)]="checkbox03"></ion-checkbox>
+        </ion-item>
+
+        <ion-item no-padding>
+          <ion-label stacked>Vidro com num. do chassi sem vestígio de adulteração</ion-label>
+          <ion-checkbox [(ngModel)]="checkbox04"></ion-checkbox>
+        </ion-item>
+
+      </ion-list>
+
       <ion-row>
         <button ion-button block large color="light" (click)="back();">Voltar</button>
         <button ion-button block large (click)="navigate();">Próximo</button>

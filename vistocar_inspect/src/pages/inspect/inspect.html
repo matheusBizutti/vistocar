@@ -278,9 +278,320 @@
       </ion-row>
     </div>
 
-    <div *ngSwitchCase="'pictures'">
-      PICTURES
-      {{ inspect }}
+    <div *ngSwitchCase="'pictures'" no-padding>
+      <ion-row>
+        <ion-col>
+          <ion-card class="background-no-images" (click)="takePicture('01')">
+            <p padding class="text-no-images" [hidden]="image1">DIANTEIRA DIAGONAL DIREITA</p>
+            <ion-row>
+              <button [hidden]="image1" ion-button clear item-end>
+                TIRAR FOTO
+                <ion-icon padding-left name="camera"></ion-icon>
+              </button>
+            </ion-row>
+            <img *ngIf="image1"
+              [src]="domSanitizer.bypassSecurityTrustUrl(image1)" />
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card class="background-no-images" (click)="takePicture('02')">
+            <p padding class="text-no-images" [hidden]="image2">TRASEIRA DIAGONAL ESQUERDA</p>
+            <ion-row>
+              <button [hidden]="image2" ion-button clear item-end>
+                TIRAR FOTO
+                <ion-icon padding-left name="camera"></ion-icon>
+              </button>
+            </ion-row>
+            <img *ngIf="image2"
+              [src]="domSanitizer.bypassSecurityTrustUrl(image2)" />
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-card class="background-no-images" (click)="takePicture('03')">
+            <p padding class="text-no-images" [hidden]="image3">AUTO APREENSÃO</p>
+            <ion-row>
+              <button [hidden]="image3" ion-button clear item-end>
+                TIRAR FOTO
+                <ion-icon padding-left name="camera"></ion-icon>
+              </button>
+            </ion-row>
+            <img *ngIf="image3"
+              [src]="domSanitizer.bypassSecurityTrustUrl(image3)" />
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card class="background-no-images" (click)="takePicture('04')">
+            <p padding class="text-no-images" [hidden]="image4">PAINEL QUILOMETRAGEM</p>
+            <ion-row>
+              <button [hidden]="image4" ion-button clear item-end>
+                TIRAR FOTO
+                <ion-icon padding-left name="camera"></ion-icon>
+              </button>
+            </ion-row>
+            <img *ngIf="image4"
+              [src]="domSanitizer.bypassSecurityTrustUrl(image4)" />
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-card class="background-no-images" (click)="takePicture('05')">
+            <p padding class="text-no-images" [hidden]="image5">CLRV</p>
+            <ion-row>
+              <button [hidden]="image5" ion-button clear item-end>
+                TIRAR FOTO
+                <ion-icon padding-left name="camera"></ion-icon>
+              </button>
+            </ion-row>
+            <img *ngIf="image5"
+              [src]="domSanitizer.bypassSecurityTrustUrl(image5)" />
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card class="background-no-images" (click)="takePicture('06')">
+            <p padding class="text-no-images" [hidden]="image6">COMP MOTOR</p>
+            <ion-row>
+              <button [hidden]="image6" ion-button clear item-end>
+                TIRAR FOTO
+                <ion-icon padding-left name="camera"></ion-icon>
+              </button>
+            </ion-row>
+            <img *ngIf="image6"
+              [src]="domSanitizer.bypassSecurityTrustUrl(image6)" />
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-card class="background-no-images" (click)="takePicture('07')">
+            <p padding class="text-no-images" [hidden]="image7">CHASSI</p>
+            <ion-row>
+              <button [hidden]="image7" ion-button clear item-end>
+                TIRAR FOTO
+                <ion-icon padding-left name="camera"></ion-icon>
+              </button>
+            </ion-row>
+            <img *ngIf="image7"
+              [src]="domSanitizer.bypassSecurityTrustUrl(image7)" />
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card class="background-no-images" (click)="takePicture('08')">
+            <p padding class="text-no-images" [hidden]="image8">MOTOR</p>
+            <ion-row>
+              <button [hidden]="image8" ion-button clear item-end>
+                TIRAR FOTO
+                <ion-icon padding-left name="camera"></ion-icon>
+              </button>
+            </ion-row>
+            <img *ngIf="image8"
+              [src]="domSanitizer.bypassSecurityTrustUrl(image8)" />
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-card class="background-no-images" (click)="takePicture('09')">
+            <p padding class="text-no-images" [hidden]="image9">PLACA</p>
+            <ion-row>
+              <button [hidden]="image9" ion-button clear item-end>
+                TIRAR FOTO
+                <ion-icon padding-left name="camera"></ion-icon>
+              </button>
+            </ion-row>
+            <img *ngIf="image9"
+              [src]="domSanitizer.bypassSecurityTrustUrl(image9)" />
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card class="background-no-images" (click)="takePicture('10')">
+            <p padding class="text-no-images" [hidden]="image10">APARELHO DE SOM</p>
+            <ion-row>
+              <button [hidden]="image10" ion-button clear item-end>
+                TIRAR FOTO
+                <ion-icon padding-left name="camera"></ion-icon>
+              </button>
+            </ion-row>
+            <img *ngIf="image10"
+              [src]="domSanitizer.bypassSecurityTrustUrl(image10)" />
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
+      <ion-row padding-bottom>
+        <ion-col>
+          <ion-card class="background-no-images" (click)="takePicture('11')">
+            <p padding class="text-no-images" [hidden]="image11">PORTA MALAS</p>
+            <ion-row>
+              <button [hidden]="image11" ion-button clear item-end>
+                TIRAR FOTO
+                <ion-icon padding-left name="camera"></ion-icon>
+              </button>
+            </ion-row>
+            <img *ngIf="image11"
+              [src]="domSanitizer.bypassSecurityTrustUrl(image11)" />
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
+      <hr>
+
+      <ion-row padding-top>
+        <ion-col>
+          <ion-card class="background-no-images" (click)="takePicture('12')">
+            <p padding class="text-no-images" [hidden]="image12">AVARIA 1</p>
+            <ion-row>
+              <button [hidden]="image12" ion-button clear item-end>
+                TIRAR FOTO
+                <ion-icon padding-left name="camera"></ion-icon>
+              </button>
+            </ion-row>
+            <img *ngIf="image12"
+              [src]="domSanitizer.bypassSecurityTrustUrl(image12)" />
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card class="background-no-images" (click)="takePicture('13')">
+            <p padding class="text-no-images" [hidden]="image13">AVARIA 2</p>
+            <ion-row>
+              <button [hidden]="image13" ion-button clear item-end>
+                TIRAR FOTO
+                <ion-icon padding-left name="camera"></ion-icon>
+              </button>
+            </ion-row>
+            <img *ngIf="image13"
+              [src]="domSanitizer.bypassSecurityTrustUrl(image13)" />
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-card class="background-no-images" (click)="takePicture('14')">
+            <p padding class="text-no-images" [hidden]="image14">AVARIA 3</p>
+            <ion-row>
+              <button [hidden]="image14" ion-button clear item-end>
+                TIRAR FOTO
+                <ion-icon padding-left name="camera"></ion-icon>
+              </button>
+            </ion-row>
+            <img *ngIf="image14"
+              [src]="domSanitizer.bypassSecurityTrustUrl(image14)" />
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card class="background-no-images" (click)="takePicture('15')">
+            <p padding class="text-no-images" [hidden]="image15">AVARIA 4</p>
+            <ion-row>
+              <button [hidden]="image15" ion-button clear item-end>
+                TIRAR FOTO
+                <ion-icon padding-left name="camera"></ion-icon>
+              </button>
+            </ion-row>
+            <img *ngIf="image15"
+              [src]="domSanitizer.bypassSecurityTrustUrl(image15)" />
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
+      <ion-row padding-bottom>
+        <ion-col>
+          <ion-card class="background-no-images" (click)="takePicture('16')">
+            <p padding class="text-no-images" [hidden]="image16">AVARIA 5</p>
+            <ion-row>
+              <button [hidden]="image16" ion-button clear item-end>
+                TIRAR FOTO
+                <ion-icon padding-left name="camera"></ion-icon>
+              </button>
+            </ion-row>
+            <img *ngIf="image16"
+              [src]="domSanitizer.bypassSecurityTrustUrl(image16)" />
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
+      <hr>
+
+      <ion-row padding-top>
+        <ion-col>
+          <ion-card class="background-no-images" (click)="takePicture('17')">
+            <p padding class="text-no-images" [hidden]="image17">ADICIONAL 1</p>
+            <ion-row>
+              <button [hidden]="image17" ion-button clear item-end>
+                TIRAR FOTO
+                <ion-icon padding-left name="camera"></ion-icon>
+              </button>
+            </ion-row>
+            <img *ngIf="image17"
+              [src]="domSanitizer.bypassSecurityTrustUrl(image17)" />
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card class="background-no-images" (click)="takePicture('18')">
+            <p padding class="text-no-images" [hidden]="image18">ADICIONAL 2</p>
+            <ion-row>
+              <button [hidden]="image18" ion-button clear item-end>
+                TIRAR FOTO
+                <ion-icon padding-left name="camera"></ion-icon>
+              </button>
+            </ion-row>
+            <img *ngIf="image18"
+              [src]="domSanitizer.bypassSecurityTrustUrl(image18)" />
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-card class="background-no-images" (click)="takePicture('19')">
+            <p padding class="text-no-images" [hidden]="image19">ADICIONAL 3</p>
+            <ion-row>
+              <button [hidden]="image19" ion-button clear item-end>
+                TIRAR FOTO
+                <ion-icon padding-left name="camera"></ion-icon>
+              </button>
+            </ion-row>
+            <img *ngIf="image19"
+              [src]="domSanitizer.bypassSecurityTrustUrl(image19)" />
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card class="background-no-images" (click)="takePicture('20')">
+            <p padding class="text-no-images" [hidden]="image20">ADICIONAL 4</p>
+            <ion-row>
+              <button [hidden]="image20" ion-button clear item-end>
+                TIRAR FOTO
+                <ion-icon padding-left name="camera"></ion-icon>
+              </button>
+            </ion-row>
+            <img *ngIf="image20"
+              [src]="domSanitizer.bypassSecurityTrustUrl(image20)" />
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
+      <ion-row padding-bottom>
+        <ion-col>
+          <ion-card class="background-no-images" (click)="takePicture('21')">
+            <p padding class="text-no-images" [hidden]="image21">ADICIONAL 5</p>
+            <ion-row>
+              <button [hidden]="image21" ion-button clear item-end>
+                TIRAR FOTO
+                <ion-icon padding-left name="camera"></ion-icon>
+              </button>
+            </ion-row>
+            <img *ngIf="image21"
+              [src]="domSanitizer.bypassSecurityTrustUrl(image21)" />
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
       <ion-row>
           <button ion-button block large color="light" (click)="back();">Voltar</button>
           <button ion-button block large (click)="navigate();">Próximo</button>
@@ -288,10 +599,15 @@
     </div>
 
     <div *ngSwitchCase="'end'">
-      END
+
       <ion-row>
         <button ion-button color="light" block large (click)="back();">Voltar</button>
       </ion-row>
+
+      <ion-row>
+        <button ion-button block large>Finalizar</button>
+      </ion-row>
+
     </div>
 
   </div>

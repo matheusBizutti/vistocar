@@ -248,26 +248,99 @@
 
     <div *ngSwitchCase="'caveat'">
 
-      <ion-list>
+      <label class="text-center">Ressalvas</label>
+      <hr>
+
+      <ion-list padding-top>
 
         <ion-item no-padding>
           <ion-label stacked>Ausência de gravação em todos os vidros</ion-label>
-          <ion-checkbox [(ngModel)]="checkbox01"></ion-checkbox>
+          <ion-checkbox [(ngModel)]="caveat01"></ion-checkbox>
         </ion-item>
 
         <ion-item no-padding>
           <ion-label stacked>Ausência parcial de numeração nos vidros</ion-label>
-          <ion-checkbox [(ngModel)]="checkbox02"></ion-checkbox>
+          <ion-checkbox [(ngModel)]="caveat02"></ion-checkbox>
         </ion-item>
 
         <ion-item no-padding>
           <ion-label stacked>Veículo blindado</ion-label>
-          <ion-checkbox [(ngModel)]="checkbox03"></ion-checkbox>
+          <ion-checkbox [(ngModel)]="caveat03"></ion-checkbox>
         </ion-item>
 
         <ion-item no-padding>
           <ion-label stacked>Vidro com num. do chassi sem vestígio de adulteração</ion-label>
-          <ion-checkbox [(ngModel)]="checkbox04"></ion-checkbox>
+          <ion-checkbox [(ngModel)]="caveat04"></ion-checkbox>
+        </ion-item>
+
+      </ion-list>
+
+      <ion-row>
+        <button ion-button block large color="light" (click)="back();">Voltar</button>
+        <button ion-button block large (click)="navigate();">Próximo</button>
+      </ion-row>
+    </div>
+
+    <div *ngSwitchCase="'conditions'">
+
+      <label class="text-center">Condições</label>
+      <hr>
+
+      <ion-list padding-top>
+
+        <ion-item no-padding>
+          <ion-label stacked>Ausência de gravação em todos os vidros</ion-label>
+          <ion-checkbox [(ngModel)]="caveat01"></ion-checkbox>
+        </ion-item>
+
+        <ion-item no-padding>
+          <ion-label stacked>Ausência parcial de numeração nos vidros</ion-label>
+          <ion-checkbox [(ngModel)]="caveat02"></ion-checkbox>
+        </ion-item>
+
+        <ion-item no-padding>
+          <ion-label stacked>Veículo blindado</ion-label>
+          <ion-checkbox [(ngModel)]="caveat03"></ion-checkbox>
+        </ion-item>
+
+        <ion-item no-padding>
+          <ion-label stacked>Vidro com num. do chassi sem vestígio de adulteração</ion-label>
+          <ion-checkbox [(ngModel)]="caveat04"></ion-checkbox>
+        </ion-item>
+
+      </ion-list>
+
+      <ion-row>
+        <button ion-button block large color="light" (click)="back();">Voltar</button>
+        <button ion-button block large (click)="navigate();">Próximo</button>
+      </ion-row>
+    </div>
+
+    <div *ngSwitchCase="'equipment'">
+
+      <label class="text-center">Equipamentos</label>
+      <hr>
+
+      <ion-list padding-top>
+
+        <ion-item no-padding>
+          <ion-label stacked>Ausência de gravação em todos os vidros</ion-label>
+          <ion-checkbox [(ngModel)]="caveat01"></ion-checkbox>
+        </ion-item>
+
+        <ion-item no-padding>
+          <ion-label stacked>Ausência parcial de numeração nos vidros</ion-label>
+          <ion-checkbox [(ngModel)]="caveat02"></ion-checkbox>
+        </ion-item>
+
+        <ion-item no-padding>
+          <ion-label stacked>Veículo blindado</ion-label>
+          <ion-checkbox [(ngModel)]="caveat03"></ion-checkbox>
+        </ion-item>
+
+        <ion-item no-padding>
+          <ion-label stacked>Vidro com num. do chassi sem vestígio de adulteração</ion-label>
+          <ion-checkbox [(ngModel)]="caveat04"></ion-checkbox>
         </ion-item>
 
       </ion-list>

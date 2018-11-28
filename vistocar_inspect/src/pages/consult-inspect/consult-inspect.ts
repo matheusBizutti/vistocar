@@ -3,13 +3,6 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 
 import { ConsultInspectDetailsPage } from '../consult-inspect-details/consult-inspect-details';
 
-/**
- * Generated class for the ConsultInspectPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage({
   name: 'consult-inspect'
 })
@@ -19,8 +12,35 @@ import { ConsultInspectDetailsPage } from '../consult-inspect-details/consult-in
 })
 export class ConsultInspectPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
-  }
+  inspects: Array<Object> = [
+    {
+      board: 'XJS-0701',
+      inspectType: 'A',
+      status: 'Finalizado'
+    },
+    {
+      board: 'XJS-0702',
+      inspectType: 'A',
+      status: 'Pendente'
+    },
+    {
+      board: 'XJS-0703',
+      inspectType: 'A',
+      status: 'Finalizado'
+    },
+    {
+      board: 'ABC-1264',
+      inspectType: 'B',
+      status: 'Pendente'
+    },
+    {
+      board: 'ABC-0101',
+      inspectType: 'A',
+      status: 'Finalizado'
+    },
+  ];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ConsultInspectPage');

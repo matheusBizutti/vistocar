@@ -20,15 +20,23 @@
       <ion-input type="text" placeholder="9BWZZZ377VT004251" name="chassi"></ion-input>
     </ion-item>
 
-    <ion-item>
-      <ion-label>Aberto</ion-label>
-      <ion-checkbox checked="true"></ion-checkbox>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Fechado</ion-label>
-      <ion-checkbox checked="false"></ion-checkbox>
-    </ion-item>
+    <ion-row radio-group [(ngModel)]="status" no-padding>
+      <ion-item>
+        <ion-label>STATUS:</ion-label>
+      </ion-item>
+      <ion-col>
+        <ion-item>
+          <ion-label>Aberto</ion-label>
+          <ion-radio value="true"></ion-radio>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label>Fechado</ion-label>
+          <ion-radio value="false"></ion-radio>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 
     <div padding>
       <button
@@ -43,7 +51,10 @@
   </ion-card>
 
   <ion-card padding-top>
-    <ion-item>
+
+    <label class="text-center">Agendamento da placa <strong>ABC-0101</strong></label>
+
+    <ion-item padding-top>
       <label>Placa: <strong>XJS-0701</strong></label>
     </ion-item>
     <ion-item>
@@ -57,6 +68,18 @@
     </ion-item>
     <ion-item>
       <label>Cliente: <strong>MultiCar S/A</strong></label>
+    </ion-item>
+  </ion-card>
+
+  <ion-card padding-top>
+
+    <label class="text-center">Quantidade de agendamentos</label>
+
+    <ion-item padding-top>
+      <label>Abertos: <strong>220</strong></label>
+    </ion-item>
+    <ion-item>
+      <label>Fechados: <strong>400</strong></label>
     </ion-item>
   </ion-card>
 </ion-content>

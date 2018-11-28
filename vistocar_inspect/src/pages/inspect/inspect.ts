@@ -4,14 +4,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CameraOptions, Camera } from '@ionic-native/camera';
 import { DomSanitizer } from '@angular/platform-browser';
 
-
-/**
- * Generated class for the InspectPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage({
   name: 'inspect'
 })
@@ -22,10 +14,10 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class InspectPage {
 
   // - checkbox ressalvas;
-  checkbox01 = false;
-  checkbox02 = false;
-  checkbox03 = false;
-  checkbox04 = false;
+  caveat01 = false;
+  caveat02 = false;
+  caveat03 = false;
+  caveat04 = false;
 
   // - imagens
   image = '';
@@ -84,19 +76,19 @@ export class InspectPage {
     caveat: [
       {
         description: 'Ausência de gravação em todos os vidros',
-        use: this.checkbox01
+        use: this.caveat01
       },
       {
         description: 'Ausência parcial de numeração nos vidros',
-        use: this.checkbox02
+        use: this.caveat02
       },
       {
         description: 'Veículo blindado',
-        use: this.checkbox03
+        use: this.caveat03
       },
       {
         description: 'Vidro com num. do chassi sem vestígio de adulteração',
-        use: this.checkbox04
+        use: this.caveat04
       }
     ],
     pictures: [
@@ -223,8 +215,16 @@ export class InspectPage {
         this.inspect = 'vehicle';
         break;
       }
-      case 'pictures': {
+      case 'conditions': {
         this.inspect = 'caveat';
+        break;
+      }
+      case 'equipment': {
+        this.inspect = 'conditions';
+        break;
+      }
+      case 'pictures': {
+        this.inspect = 'equipment';
         break;
       }
       case 'end': {
@@ -245,6 +245,14 @@ export class InspectPage {
         break;
       }
       case 'caveat': {
+        this.inspect = 'conditions';
+        break;
+      }
+      case 'conditions': {
+        this.inspect = 'equipment';
+        break;
+      }
+      case 'equipment': {
         this.inspect = 'pictures';
         break;
       }

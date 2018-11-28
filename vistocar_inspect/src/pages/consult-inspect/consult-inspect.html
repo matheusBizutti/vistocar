@@ -12,22 +12,10 @@
   <ion-row>
     <ion-col>
       <ion-list>
-        <ion-item>
-          <h2 padding-top>Placa: XJS-0701</h2>
-          <p>Tipo de vistoria: A</p>
+        <ion-item *ngFor="let inspect of inspects;" (click)="details();">
+          <h2 padding-top>Placa: {{ inspect.board }}</h2>
+          <p>Tipo de vistoria: {{ inspect.inspectType }} - {{ inspect.status }}</p>
           <button ion-button clear item-end (click)="details();" class="button-font-text">Visualizar</button>
-        </ion-item>
-
-        <ion-item>
-          <h2 padding-top>Placa: ABC-1264</h2>
-          <p>Tipo de vistoria: B</p>
-          <button ion-button clear item-end>Visualizar</button>
-        </ion-item>
-
-        <ion-item>
-          <h2 padding-top>Placa: ABC-1264</h2>
-          <p>Tipo de vistoria: B</p>
-          <button ion-button clear item-end>Visualizar</button>
         </ion-item>
       </ion-list>
     </ion-col>

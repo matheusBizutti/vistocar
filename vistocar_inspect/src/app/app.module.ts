@@ -11,6 +11,11 @@ import { Camera } from '@ionic-native/camera';
 import { MyApp } from './app.component';
 import { LoginPageModule } from '../pages/login/login.module';
 import { ConsultInspectPageModule } from '../pages/consult-inspect/consult-inspect.module';
+import { BaseUrl } from './baseurl/baseurl.service';
+import { AuthService } from './auth/auth.service';
+import { LoginService } from '../pages/login/login.service';
+import { CookieService } from 'ngx-cookie-service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,6 +26,7 @@ import { ConsultInspectPageModule } from '../pages/consult-inspect/consult-inspe
     CommonModule,
     FormsModule,
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
     ConsultInspectPageModule
   ],
@@ -32,6 +38,10 @@ import { ConsultInspectPageModule } from '../pages/consult-inspect/consult-inspe
     StatusBar,
     SplashScreen,
     Camera,
+    BaseUrl,
+    LoginService,
+    CookieService,
+    AuthService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -22,5 +22,40 @@ export class InspectService {
     return this.http.get(this.baseUrl.getBaseUrl() + 'getAuction');
   }
 
+  getBoardCondition(): Observable<any> {
+    return this.http.get(this.baseUrl.getBaseUrl() + 'getAllBoardCondition');
+  }
+
+  getChassis(): Observable<any> {
+    return this.http.get(this.baseUrl.getBaseUrl() + 'getAllChassis');
+  }
+
+  getStates(): Observable<any> {
+    return this.http.get(this.baseUrl.getBaseUrl() + 'getAllStates');
+  }
+
+  getExchanges(): Observable<any> {
+    return this.http.get(this.baseUrl.getBaseUrl() + 'getAllExchange');
+  }
+
+  getModels(): Observable<any> {
+    return this.http.get(this.baseUrl.getBaseUrl() + 'getAllModel');
+  }
+
+  getBrands(): Observable<any> {
+    return this.http.get(this.baseUrl.getBaseUrl() + 'getAllBrand');
+  }
+
+  getEngineers(): Observable<any> {
+    return this.http.get(this.baseUrl.getBaseUrl() + 'getAllEngineer');
+  }
+
+  getVehicleCategory(): Observable<any> {
+    return this.http.get(this.baseUrl.getBaseUrl() + 'getAllVehicleCategory');
+  }
+
+  getCustomers(): Observable<any> {
+    return this.http.get(this.baseUrl.getBaseUrl() + 'getAllCustomers');
+  }
 }
 

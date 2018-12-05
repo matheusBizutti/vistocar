@@ -23,8 +23,7 @@
           <ion-item no-padding>
             <ion-label stacked>Leilão</ion-label>
             <ion-select [(ngModel)]="inspectData.auction">
-              <ion-option value="01">APL01</ion-option>
-              <ion-option value="02">APL02</ion-option>
+              <ion-option *ngFor="let auction of auctions" [value]="auction.nome">{{auction.nome}}</ion-option>
             </ion-select>
           </ion-item>
         </ion-col>
@@ -226,15 +225,15 @@
         <ion-item no-padding>
           <ion-label stacked>Cor</ion-label>
           <ion-select [(ngModel)]="inspectData.color">
-            <ion-option value="colocar as opções">colocar as opções</ion-option>
+            <ion-option *ngFor="let color of colors" [value]="color.nome">{{color.nome}}</ion-option>
           </ion-select>
         </ion-item>
       </ion-row>
       <ion-row>
         <ion-item no-padding>
-          <ion-label stacked>Combústivel</ion-label>
+          <ion-label stacked>Combustivel</ion-label>
           <ion-select [(ngModel)]="inspectData.fuel">
-            <ion-option value="colocar as opções">colocar as opções</ion-option>
+            <ion-option *ngFor="let fuel of fuels" [value]="fuel.nome">{{fuel.nome}} </ion-option>
           </ion-select>
         </ion-item>
       </ion-row>
@@ -353,32 +352,28 @@
 
     <div *ngSwitchCase="'pictures'" no-padding>
       <ion-row>
-        <ion-col>
-          <ion-card class="background-no-images" (click)="takePicture('01')">
-            <p padding class="text-no-images" [hidden]="image1">DIANTEIRA DIAGONAL DIREITA</p>
-            <ion-row>
-              <button [hidden]="image1" ion-button clear item-end>
-                TIRAR FOTO
-                <ion-icon padding-left name="camera"></ion-icon>
-              </button>
-            </ion-row>
-            <img *ngIf="image1"
-              [src]="domSanitizer.bypassSecurityTrustUrl(image1)" />
-          </ion-card>
-        </ion-col>
-        <ion-col>
-          <ion-card class="background-no-images" (click)="takePicture('02')">
-            <p padding class="text-no-images" [hidden]="image2">TRASEIRA DIAGONAL ESQUERDA</p>
-            <ion-row>
-              <button [hidden]="image2" ion-button clear item-end>
-                TIRAR FOTO
-                <ion-icon padding-left name="camera"></ion-icon>
-              </button>
-            </ion-row>
-            <img *ngIf="image2"
-              [src]="domSanitizer.bypassSecurityTrustUrl(image2)" />
-          </ion-card>
-        </ion-col>
+        <ion-card class="background-no-images" (click)="takePicture('01')">
+          <p padding class="text-no-images" [hidden]="image1">DIANTEIRA DIAGONAL DIREITA</p>
+          <ion-row>
+            <button [hidden]="image1" ion-button clear item-end>
+              TIRAR FOTO
+              <ion-icon padding-left name="camera"></ion-icon>
+            </button>
+          </ion-row>
+          <img *ngIf="image1"
+            [src]="domSanitizer.bypassSecurityTrustUrl(image1)" />
+        </ion-card>
+        <ion-card class="background-no-images" (click)="takePicture('02')">
+          <p padding class="text-no-images" [hidden]="image2">TRASEIRA DIAGONAL ESQUERDA</p>
+          <ion-row>
+            <button [hidden]="image2" ion-button clear item-end>
+              TIRAR FOTO
+              <ion-icon padding-left name="camera"></ion-icon>
+            </button>
+          </ion-row>
+          <img *ngIf="image2"
+            [src]="domSanitizer.bypassSecurityTrustUrl(image2)" />
+        </ion-card>
       </ion-row>
 
       <ion-row>

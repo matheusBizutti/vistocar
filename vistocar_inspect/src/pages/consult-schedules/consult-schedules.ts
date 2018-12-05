@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { LoadingService } from '../../app/loading/loading.service';
 
 @IonicPage({
   name: 'consult-schedules'
@@ -12,11 +13,17 @@ export class ConsultSchedulesPage {
 
   status: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              private loadingService: LoadingService) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ConsultSchedulesPage');
+    this.loadingService.show();
+  }
+
+  ionViewWillEnter() {
+    this.loadingService.hide();
   }
 
 }

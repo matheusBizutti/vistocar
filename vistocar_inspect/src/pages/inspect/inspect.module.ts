@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
+
 import { InspectPage } from './inspect';
+import { InspectService } from './inspect.service';
 
 @NgModule({
   declarations: [
@@ -9,5 +11,6 @@ import { InspectPage } from './inspect';
   imports: [
     IonicPageModule.forChild(InspectPage),
   ],
+  providers: [InspectService]
 })
 export class InspectPageModule {}

@@ -3,6 +3,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { CameraOptions, Camera } from '@ionic-native/camera';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Subscription } from 'rxjs';
+import { InspectService } from './inspect.service';
+import { LoadingService } from '../../app/loading/loading.service';
 
 @IonicPage({
   name: 'inspect'
@@ -200,13 +203,59 @@ export class InspectPage {
     ]
   }
 
+  auctions: Array<Object>;
+  colors: Array<Object>;
+  fuels: Array<Object>;
+
+  subscriptionAuction: Subscription;
+  subscriptionColors: Subscription;
+  subscriptionFuel: Subscription;
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private camera: Camera,
-              private domSanitizer: DomSanitizer) {}
+              private domSanitizer: DomSanitizer,
+              private inspectService: InspectService,
+              private loadingService: LoadingService) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad InspectPage');
+
+    this.loadingService.show();
+    this.subscriptionColors = this.inspectService.getColors().subscribe(response => {
+      this.colors = [...response];
+    }, err => {
+      console.log(err);
+    });
+
+    this.subscriptionFuel = this.inspectService.getFuel().subscribe(response => {
+      this.fuels = [...response];
+    }, err => {
+      console.log(err);
+    });
+
+    this.subscriptionAuction = this.inspectService.getAuction().subscribe(response => {
+      this.auctions = [...response];
+    }, err => {
+      console.log(err);
+    });
+  }
+
+  ionViewWillEnter() {
+    this.loadingService.hide();
+  }
+
+  ionViewDidLeave() {
+    if(this.subscriptionColors) {
+      this.subscriptionColors.unsubscribe();
+    }
+
+    if(this.subscriptionAuction) {
+      this.subscriptionAuction.unsubscribe();
+    }
+
+    if(this.subscriptionFuel) {
+      this.subscriptionFuel.unsubscribe();
+    }
   }
 
   back() {

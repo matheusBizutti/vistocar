@@ -16,6 +16,9 @@ import { AuthService } from './auth/auth.service';
 import { LoginService } from '../pages/login/login.service';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClientModule } from '@angular/common/http';
+import { InterceptorModule } from './interceptor/interceptor.module';
+import { InspectPageModule } from '../pages/inspect/inspect.module';
+import { LoadingService } from './loading/loading.service';
 
 @NgModule({
   declarations: [
@@ -26,8 +29,10 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     FormsModule,
     BrowserModule,
+    InterceptorModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
+    InspectPageModule,
     ConsultInspectPageModule
   ],
   bootstrap: [IonicApp],
@@ -40,6 +45,7 @@ import { HttpClientModule } from '@angular/common/http';
     Camera,
     BaseUrl,
     LoginService,
+    LoadingService,
     CookieService,
     AuthService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

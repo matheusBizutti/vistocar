@@ -23,8 +23,8 @@ export class AuthService {
   }
 
   setToken(token) {
-    this.token = token;
-    this.cookieService.set( 'token', token, undefined, '/' );
+    this.token = token['Authorization'];
+    this.cookieService.set( 'token', this.token, undefined, '/' );
   }
 
 }

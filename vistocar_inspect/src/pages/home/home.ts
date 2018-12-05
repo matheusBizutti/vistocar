@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
+import { AuthService } from '../../app/auth/auth.service';
 
 @IonicPage({
   name: 'home'
@@ -12,7 +13,8 @@ export class HomePage {
 
   // inspect: string;
 
-  constructor(public navCtrl: NavController) {}
+  constructor(public navCtrl: NavController,
+              private authService: AuthService) {}
 
   consultInspect() {
     this.navCtrl.push('consult-inspect');
@@ -23,6 +25,7 @@ export class HomePage {
   }
 
   exit( ) {
+    this.authService.clear();
     this.navCtrl.push('login');
   }
 

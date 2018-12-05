@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 
 import { ConsultInspectDetailsPage } from '../consult-inspect-details/consult-inspect-details';
+import { LoadingService } from '../../app/loading/loading.service';
 
 @IonicPage({
   name: 'consult-inspect'
@@ -40,10 +41,17 @@ export class ConsultInspectPage {
     },
   ];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {}
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public modalCtrl: ModalController,
+              private loadingService: LoadingService) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ConsultInspectPage');
+    this.loadingService.show();
+  }
+
+  ionViewWillEnter() {
+    this.loadingService.hide();
   }
 
   details() {

@@ -14,8 +14,7 @@
       <ion-item no-padding>
         <ion-label stacked>Cliente</ion-label>
         <ion-select [(ngModel)]="inspectData.customer">
-          <ion-option value="01">Cliente01</ion-option>
-          <ion-option value="02">Cliente 02</ion-option>
+          <ion-option *ngFor="let customer of customers" [value]="customer.nome">{{customer.nome}}</ion-option>
         </ion-select>
       </ion-item>
       <ion-row>
@@ -49,7 +48,7 @@
           <ion-item no-padding>
             <ion-label stacked>Categoria veiculo</ion-label>
             <ion-select [(ngModel)]="inspectData.vehiclecategory">
-              <ion-option value="selecione">Selecione</ion-option>
+              <ion-option *ngFor="let category of vehicleCategories" [value]="category.nome">{{category.nome}}</ion-option>
             </ion-select>
           </ion-item>
         </ion-col>

@@ -204,11 +204,17 @@ export class InspectPage {
   }
 
   auctions: Array<Object>;
+  boardCondition: Array<Object>;
   colors: Array<Object>;
+  customers: Array<Object>;
   fuels: Array<Object>;
+  vehicleCategories: Array<Object>;
 
   subscriptionAuction: Subscription;
+  subscriptionBoardCondition: Subscription;
+  subscriptionCategories: Subscription;
   subscriptionColors: Subscription;
+  subscriptionCustomers: Subscription;
   subscriptionFuel: Subscription;
 
   constructor(public navCtrl: NavController,
@@ -238,6 +244,25 @@ export class InspectPage {
     }, err => {
       console.log(err);
     });
+
+    this.subscriptionCustomers = this.inspectService.getCustomers().subscribe(response => {
+      this.customers = [...response];
+    }, err => {
+      console.log(err);
+    });
+
+    this.subscriptionCategories = this.inspectService.getVehicleCategory().subscribe(response => {
+      this.vehicleCategories = [...response];
+    }, err => {
+      console.log(err);
+    });
+
+    this.subscriptionBoardCondition = this.inspectService.getBoardCondition().subscribe(response => {
+      this.boardCondition = [...response];
+    }, err => {
+      console.log(err);
+    });
+
   }
 
   ionViewWillEnter() {
@@ -256,6 +281,19 @@ export class InspectPage {
     if(this.subscriptionFuel) {
       this.subscriptionFuel.unsubscribe();
     }
+
+    if(this.subscriptionCustomers) {
+      this.subscriptionCustomers.unsubscribe();
+    }
+
+    if(this.subscriptionCategories) {
+      this.subscriptionCategories.unsubscribe();
+    }
+
+    if(this.subscriptionBoardCondition) {
+      this.subscriptionBoardCondition.unsubscribe();
+    }
+
   }
 
   back() {

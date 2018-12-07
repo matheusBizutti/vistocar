@@ -10,3 +10,11 @@
 .text-no-images {
   text-align: center;
 }
+
+.size-images {
+  background-size: 150px 150px;
+  background-repeat: no-repeat;
+  max-width: 100%;
+  max-height: 100%;
+  background-position: center;
+}

@@ -346,28 +346,32 @@
 
     <div *ngSwitchCase="'pictures'" no-padding>
       <ion-row>
-        <ion-card class="background-no-images" (click)="takePicture('01')">
-          <p padding class="text-no-images" [hidden]="image1">DIANTEIRA DIAGONAL DIREITA</p>
-          <ion-row>
-            <button [hidden]="image1" ion-button clear item-end>
-              TIRAR FOTO
-              <ion-icon padding-left name="camera"></ion-icon>
-            </button>
-          </ion-row>
-          <img *ngIf="image1"
-            [src]="domSanitizer.bypassSecurityTrustUrl(image1)" />
-        </ion-card>
-        <ion-card class="background-no-images" (click)="takePicture('02')">
-          <p padding class="text-no-images" [hidden]="image2">TRASEIRA DIAGONAL ESQUERDA</p>
-          <ion-row>
-            <button [hidden]="image2" ion-button clear item-end>
-              TIRAR FOTO
-              <ion-icon padding-left name="camera"></ion-icon>
-            </button>
-          </ion-row>
-          <img *ngIf="image2"
-            [src]="domSanitizer.bypassSecurityTrustUrl(image2)" />
-        </ion-card>
+        <ion-col>
+          <ion-card class="background-no-images" (click)="takePicture('01')">
+            <p padding class="text-no-images" [hidden]="image1">DIANTEIRA DIAGONAL DIREITA</p>
+            <ion-row>
+              <button [hidden]="image1" ion-button clear item-end>
+                TIRAR FOTO
+                <ion-icon padding-left name="camera"></ion-icon>
+              </button>
+            </ion-row>
+            <img *ngIf="image1"
+              [src]="domSanitizer.bypassSecurityTrustUrl(image1)" class="size-images"/>
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card class="background-no-images" (click)="takePicture('02')">
+            <p padding class="text-no-images" [hidden]="image2">TRASEIRA DIAGONAL ESQUERDA</p>
+            <ion-row>
+              <button [hidden]="image2" ion-button clear item-end>
+                TIRAR FOTO
+                <ion-icon padding-left name="camera"></ion-icon>
+              </button>
+            </ion-row>
+            <img *ngIf="image2"
+              [src]="domSanitizer.bypassSecurityTrustUrl(image2)" class="size-images"/>
+          </ion-card>
+        </ion-col>
       </ion-row>
 
       <ion-row>
@@ -381,7 +385,7 @@
               </button>
             </ion-row>
             <img *ngIf="image3"
-              [src]="domSanitizer.bypassSecurityTrustUrl(image3)" />
+              [src]="domSanitizer.bypassSecurityTrustUrl(image3)" class="size-images"/>
           </ion-card>
         </ion-col>
         <ion-col>
@@ -394,7 +398,7 @@
               </button>
             </ion-row>
             <img *ngIf="image4"
-              [src]="domSanitizer.bypassSecurityTrustUrl(image4)" />
+              [src]="domSanitizer.bypassSecurityTrustUrl(image4)" class="size-images"/>
           </ion-card>
         </ion-col>
       </ion-row>
@@ -410,7 +414,7 @@
               </button>
             </ion-row>
             <img *ngIf="image5"
-              [src]="domSanitizer.bypassSecurityTrustUrl(image5)" />
+              [src]="domSanitizer.bypassSecurityTrustUrl(image5)" class="size-images"/>
           </ion-card>
         </ion-col>
         <ion-col>
@@ -423,7 +427,7 @@
               </button>
             </ion-row>
             <img *ngIf="image6"
-              [src]="domSanitizer.bypassSecurityTrustUrl(image6)" />
+              [src]="domSanitizer.bypassSecurityTrustUrl(image6)" class="size-images"/>
           </ion-card>
         </ion-col>
       </ion-row>
@@ -439,7 +443,7 @@
               </button>
             </ion-row>
             <img *ngIf="image7"
-              [src]="domSanitizer.bypassSecurityTrustUrl(image7)" />
+              [src]="domSanitizer.bypassSecurityTrustUrl(image7)" class="size-images"/>
           </ion-card>
         </ion-col>
         <ion-col>
@@ -452,7 +456,7 @@
               </button>
             </ion-row>
             <img *ngIf="image8"
-              [src]="domSanitizer.bypassSecurityTrustUrl(image8)" />
+              [src]="domSanitizer.bypassSecurityTrustUrl(image8)" class="size-images"/>
           </ion-card>
         </ion-col>
       </ion-row>
@@ -468,7 +472,7 @@
               </button>
             </ion-row>
             <img *ngIf="image9"
-              [src]="domSanitizer.bypassSecurityTrustUrl(image9)" />
+              [src]="domSanitizer.bypassSecurityTrustUrl(image9)" class="size-images"/>
           </ion-card>
         </ion-col>
         <ion-col>
@@ -481,7 +485,7 @@
               </button>
             </ion-row>
             <img *ngIf="image10"
-              [src]="domSanitizer.bypassSecurityTrustUrl(image10)" />
+              [src]="domSanitizer.bypassSecurityTrustUrl(image10)" class="size-images"/>
           </ion-card>
         </ion-col>
       </ion-row>
@@ -497,7 +501,7 @@
               </button>
             </ion-row>
             <img *ngIf="image11"
-              [src]="domSanitizer.bypassSecurityTrustUrl(image11)" />
+              [src]="domSanitizer.bypassSecurityTrustUrl(image11)" class="size-images"/>
           </ion-card>
         </ion-col>
       </ion-row>
@@ -515,7 +519,7 @@
               </button>
             </ion-row>
             <img *ngIf="image12"
-              [src]="domSanitizer.bypassSecurityTrustUrl(image12)" />
+              [src]="domSanitizer.bypassSecurityTrustUrl(image12)" class="size-images"/>
           </ion-card>
         </ion-col>
         <ion-col>
@@ -528,7 +532,7 @@
               </button>
             </ion-row>
             <img *ngIf="image13"
-              [src]="domSanitizer.bypassSecurityTrustUrl(image13)" />
+              [src]="domSanitizer.bypassSecurityTrustUrl(image13)" class="size-images"/>
           </ion-card>
         </ion-col>
       </ion-row>
@@ -544,7 +548,7 @@
               </button>
             </ion-row>
             <img *ngIf="image14"
-              [src]="domSanitizer.bypassSecurityTrustUrl(image14)" />
+              [src]="domSanitizer.bypassSecurityTrustUrl(image14)" class="size-images"/>
           </ion-card>
         </ion-col>
         <ion-col>
@@ -557,7 +561,7 @@
               </button>
             </ion-row>
             <img *ngIf="image15"
-              [src]="domSanitizer.bypassSecurityTrustUrl(image15)" />
+              [src]="domSanitizer.bypassSecurityTrustUrl(image15)" class="size-images"/>
           </ion-card>
         </ion-col>
       </ion-row>
@@ -573,7 +577,7 @@
               </button>
             </ion-row>
             <img *ngIf="image16"
-              [src]="domSanitizer.bypassSecurityTrustUrl(image16)" />
+              [src]="domSanitizer.bypassSecurityTrustUrl(image16)" class="size-images"/>
           </ion-card>
         </ion-col>
       </ion-row>
@@ -591,7 +595,7 @@
               </button>
             </ion-row>
             <img *ngIf="image17"
-              [src]="domSanitizer.bypassSecurityTrustUrl(image17)" />
+              [src]="domSanitizer.bypassSecurityTrustUrl(image17)" class="size-images"/>
           </ion-card>
         </ion-col>
         <ion-col>
@@ -604,7 +608,7 @@
               </button>
             </ion-row>
             <img *ngIf="image18"
-              [src]="domSanitizer.bypassSecurityTrustUrl(image18)" />
+              [src]="domSanitizer.bypassSecurityTrustUrl(image18)" class="size-images"/>
           </ion-card>
         </ion-col>
       </ion-row>
@@ -620,7 +624,7 @@
               </button>
             </ion-row>
             <img *ngIf="image19"
-              [src]="domSanitizer.bypassSecurityTrustUrl(image19)" />
+              [src]="domSanitizer.bypassSecurityTrustUrl(image19)" class="size-images"/>
           </ion-card>
         </ion-col>
         <ion-col>
@@ -633,7 +637,7 @@
               </button>
             </ion-row>
             <img *ngIf="image20"
-              [src]="domSanitizer.bypassSecurityTrustUrl(image20)" />
+              [src]="domSanitizer.bypassSecurityTrustUrl(image20)" class="size-images"/>
           </ion-card>
         </ion-col>
       </ion-row>
@@ -649,7 +653,7 @@
               </button>
             </ion-row>
             <img *ngIf="image21"
-              [src]="domSanitizer.bypassSecurityTrustUrl(image21)" />
+              [src]="domSanitizer.bypassSecurityTrustUrl(image21)" class="size-images"/>
           </ion-card>
         </ion-col>
       </ion-row>

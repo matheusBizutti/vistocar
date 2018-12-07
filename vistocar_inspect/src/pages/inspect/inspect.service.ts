@@ -57,5 +57,6 @@ export class InspectService {
   getCustomers(): Observable<any> {
     return this.http.get(this.baseUrl.getBaseUrl() + 'getAllCustomers');
   }
+
 }
 

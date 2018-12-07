@@ -77,12 +77,7 @@
           <ion-item no-padding>
             <ion-label stacked>Condição da placa</ion-label>
             <ion-select [(ngModel)]="inspectData.boardcondition">
-              <ion-option value="Lacre da placa violado">Lacre da placa violado</ion-option>
-              <ion-option value="Placa - caracteres dentro dos padrões originais">Placa - caracteres dentro dos padrões originais</ion-option>
-              <ion-option value="Placa quebrada">Placa quebrada</ion-option>
-              <ion-option value="Sem placa">Sem placa</ion-option>
-              <ion-option value="Tarjeta da placa divergente">Tarjeta da placa divergente</ion-option>
-              <ion-option value="Veículo de primeiro emplacamento">Veículo de primeiro emplacamento</ion-option>
+              <ion-option *ngFor="let condition of boardCondition" [value]="condition.nome">{{condition.nome}}</ion-option>
             </ion-select>
           </ion-item>
         </ion-col>
@@ -98,7 +93,7 @@
           <ion-item no-padding>
             <ion-label stacked>UF Placa</ion-label>
             <ion-select [(ngModel)]="inspectData.ufboard">
-              <ion-option value="SP">SP</ion-option>
+              <ion-option *ngFor="let state of getKeys(states)" [value]="state">{{state}}</ion-option>
             </ion-select>
           </ion-item>
         </ion-col>
@@ -127,7 +122,7 @@
         <ion-item no-padding>
           <ion-label stacked>Condição do motor</ion-label>
           <ion-select [(ngModel)]="inspectData.motorcondition">
-            <ion-option value="colocar as opções">colocar as opções</ion-option>
+            <ion-option *ngFor="let engineer of engineers" [value]="engineer.nome">{{engineer.nome}}</ion-option>
           </ion-select>
         </ion-item>
       </ion-row>
@@ -149,7 +144,7 @@
         <ion-item no-padding>
           <ion-label stacked>Condição do chassi</ion-label>
           <ion-select [(ngModel)]="inspectData.chassicondition">
-            <ion-option value="colocar as opções">colocar as opções</ion-option>
+            <ion-option *ngFor="let chassi of chassis" [value]="chassi.nome">{{chassi.nome}}</ion-option>
           </ion-select>
         </ion-item>
       </ion-row>

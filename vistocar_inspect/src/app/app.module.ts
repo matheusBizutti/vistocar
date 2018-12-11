@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { InterceptorModule } from './interceptor/interceptor.module';
 import { InspectPageModule } from '../pages/inspect/inspect.module';
 import { LoadingService } from './loading/loading.service';
+import { ConsultSchedulesPageModule } from '../pages/consult-schedules/consult-schedules.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { LoadingService } from './loading/loading.service';
     HttpClientModule,
     IonicModule.forRoot(MyApp),
     InspectPageModule,
-    ConsultInspectPageModule
+    ConsultInspectPageModule,
+    ConsultSchedulesPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

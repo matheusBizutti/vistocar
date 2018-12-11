@@ -6,18 +6,17 @@
 
 </ion-header>
 
-
 <ion-content padding>
 
   <ion-card padding-bottom>
     <ion-item>
       <ion-label color="primary" stacked>Placa</ion-label>
-      <ion-input type="text" placeholder="JXS-0701" name="board"></ion-input>
+      <ion-input [disabled]="chassi !== ''" type="text" placeholder="JXS-0701" [(ngModel)]="board" name="board"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label color="primary" stacked>Chassi</ion-label>
-      <ion-input type="text" placeholder="9BWZZZ377VT004251" name="chassi"></ion-input>
+      <ion-input [disabled]="board !== ''" type="text" placeholder="9BWZZZ377VT004251" [(ngModel)]="chassi" name="chassi"></ion-input>
     </ion-item>
 
     <ion-row radio-group [(ngModel)]="status" no-padding>
@@ -27,13 +26,13 @@
       <ion-col>
         <ion-item>
           <ion-label>Aberto</ion-label>
-          <ion-radio value="true"></ion-radio>
+          <ion-radio [disabled]="board !== '' || chassi !== ''" value="true"></ion-radio>
         </ion-item>
       </ion-col>
       <ion-col>
         <ion-item>
           <ion-label>Fechado</ion-label>
-          <ion-radio value="false"></ion-radio>
+          <ion-radio [disabled]="board !== '' || chassi !== ''" value="false"></ion-radio>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -43,43 +42,73 @@
         ion-button
         block
         large
-        color="secondary">
+        color="secondary"
+        (click)="filter();">
         Filtrar
       </button>
     </div>
 
   </ion-card>
 
-  <ion-card padding-top>
+  <ion-card padding-top *ngIf="schedulesBoard | async as board; else emptyData">
 
-    <label class="text-center">Agendamento da placa <strong>ABC-0101</strong></label>
+    <label class="text-center">Agendamento</label>
 
     <ion-item padding-top>
-      <label>Placa: <strong>XJS-0701</strong></label>
+      <label>Placa: <strong>{{board.placa}}</strong></label>
     </ion-item>
     <ion-item>
-      <label>Tipo da vistoria: <strong>A</strong></label>
+      <label>Modelo do veículo: <strong>{{board.modelo_veiculo}}</strong></label>
     </ion-item>
     <ion-item>
-      <label>Status dos dados: <strong>Transmitidos</strong></label>
+      <label>Renavam: <strong>{{board.renavam}}</strong></label>
     </ion-item>
     <ion-item>
-      <label>Status da imagem: <strong>Transmitida</strong></label>
+      <label>Status: <strong>{{getStatus(board.vistoria_feita)}}</strong></label>
     </ion-item>
     <ion-item>
       <label>Cliente: <strong>MultiCar S/A</strong></label>
     </ion-item>
   </ion-card>
 
-  <ion-card padding-top>
+  <ion-card padding-top *ngIf="schedulesChassi | async as chassi$; else emptyData">
+
+    <label class="text-center">Agendamento</label>
+
+    <ion-item padding-top>
+      <label>Chassi: <strong>{{chassi$.chassi}}</strong></label>
+    </ion-item>
+    <ion-item>
+      <label>Modelo do veículo: <strong>{{chassi$.modelo_veiculo}}</strong></label>
+    </ion-item>
+    <ion-item>
+      <label>Status: <strong>{{getStatus(chassi$.vistoria_feita)}}</strong></label>
+    </ion-item>
+    <ion-item>
+      <label>Cliente: <strong>MultiCar S/A</strong></label>
+    </ion-item>
+  </ion-card>
+
+  <ion-card padding-top *ngIf="schedulesByStatusOpen | async as scheduleOpen; else emptyData">
 
     <label class="text-center">Quantidade de agendamentos</label>
 
     <ion-item padding-top>
-      <label>Abertos: <strong>220</strong></label>
-    </ion-item>
-    <ion-item>
-      <label>Fechados: <strong>400</strong></label>
+      <label>Abertos: <strong>{{scheduleOpen}}</strong></label>
     </ion-item>
   </ion-card>
+
+  <ion-card padding-top *ngIf="schedulesByStatusClosed | async as scheduleClosed; else emptyData">
+
+    <label class="text-center">Quantidade de agendamentos</label>
+
+    <ion-item>
+      <label>Fechados: <strong>{{scheduleClosed}}</strong></label>
+    </ion-item>
+  </ion-card>
+
+  <ng-template #emptyData>
+    Nenhum dado encontrado
+  </ng-template>
+
 </ion-content>

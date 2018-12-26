@@ -1,10 +1,9 @@
-import { Injectable, Injector } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
 import { AuthService } from '../auth/auth.service';
-import { NavController } from 'ionic-angular';
 
 @Injectable()
 export class Interceptor implements HttpInterceptor {
@@ -15,7 +14,7 @@ export class Interceptor implements HttpInterceptor {
 
     request = request.clone({
       setHeaders: {
-        Authorization: 'Bearer ' + this.authService.getToken()
+        token: this.authService.getToken() ? this.authService.getToken() : '',
       }
     });
 

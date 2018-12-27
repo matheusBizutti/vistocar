@@ -11,7 +11,7 @@
   <ion-card padding-bottom>
     <ion-item>
       <ion-label color="primary" stacked>Placa</ion-label>
-      <ion-input [disabled]="chassi !== ''" type="text" placeholder="JXS-0701" [(ngModel)]="board" name="board"></ion-input>
+      <ion-input [disabled]="chassi" type="text" placeholder="JXS-0701" [(ngModel)]="board" name="board"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -48,6 +48,8 @@
       </button>
     </div>
 
+    {{status}}
+
   </ion-card>
 
   <ion-card padding-top *ngIf="schedulesBoard | async as board; else emptyData">
@@ -71,7 +73,7 @@
     </ion-item>
   </ion-card>
 
-  <ion-card padding-top *ngIf="schedulesChassi | async as chassi$; else emptyData">
+  <ion-card padding-top *ngIf="schedulesChassi | async as chassi$">
 
     <label class="text-center">Agendamento</label>
 
@@ -89,26 +91,22 @@
     </ion-item>
   </ion-card>
 
-  <ion-card padding-top *ngIf="schedulesByStatusOpen | async as scheduleOpen; else emptyData">
+  <ion-card padding-top *ngIf="!board && !chassi && status && schedulesByStatusOpen | async as scheduleOpen">
 
     <label class="text-center">Quantidade de agendamentos</label>
 
     <ion-item padding-top>
-      <label>Abertos: <strong>{{scheduleOpen}}</strong></label>
+      <label>Abertos: <strong>{{scheduleOpen.length}}</strong></label>
     </ion-item>
   </ion-card>
 
-  <ion-card padding-top *ngIf="schedulesByStatusClosed | async as scheduleClosed; else emptyData">
+  <ion-card padding-top *ngIf="!board && !chassi && !status && schedulesByStatusClosed | async as scheduleClosed">
 
     <label class="text-center">Quantidade de agendamentos</label>
 
     <ion-item>
-      <label>Fechados: <strong>{{scheduleClosed}}</strong></label>
+      <label>Fechados: <strong>{{scheduleClosed.length}}</strong></label>
     </ion-item>
   </ion-card>
-
-  <ng-template #emptyData>
-    Nenhum dado encontrado
-  </ng-template>
 
 </ion-content>

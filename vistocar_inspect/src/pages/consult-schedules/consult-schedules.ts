@@ -15,7 +15,7 @@ export class ConsultSchedulesPage {
 
   board: string = '';
   chassi: string = '';
-  status: boolean = false;
+  status: boolean;
   schedulesBoard;
   schedulesChassi;
   schedulesByStatusOpen;
@@ -39,13 +39,17 @@ export class ConsultSchedulesPage {
 
     if (!this.board && !this.chassi) {
 
-      if (this.status) {
-        console.log('entrei acima');
-        this.schedulesByStatusOpen = this.getSchedulesByStatusOpen();
-      } else {
-        console.log('entrei');
-        this.schedulesByStatusClosed = this.getSchedulesByStatusClosed();
-      }
+      console.log(this.status);
+
+      this.status ? this.schedulesByStatusOpen = this.getSchedulesByStatusOpen() : this.schedulesByStatusClosed = this.getSchedulesByStatusClosed();
+
+      // if (this.status) {
+      //   console.log('entrei acima');
+      //   this.schedulesByStatusOpen = this.getSchedulesByStatusOpen();
+      // } else {
+      //   console.log('entrei');
+      //   this.schedulesByStatusClosed = this.getSchedulesByStatusClosed();
+      // }
 
     } else {
 

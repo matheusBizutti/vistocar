@@ -11,7 +11,7 @@
   <ion-card padding-bottom>
     <ion-item>
       <ion-label color="primary" stacked>Placa</ion-label>
-      <ion-input [disabled]="chassi" type="text" placeholder="JXS-0701" [(ngModel)]="board" name="board"></ion-input>
+      <ion-input [disabled]="chassi !== ''" type="text" placeholder="JXS-0701" [(ngModel)]="board" name="board"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -48,11 +48,9 @@
       </button>
     </div>
 
-    {{status}}
-
   </ion-card>
 
-  <ion-card padding-top *ngIf="schedulesBoard | async as board; else emptyData">
+  <ion-card padding-top *ngIf="board && schedulesBoard | async as board">
 
     <label class="text-center">Agendamento</label>
 
@@ -69,11 +67,14 @@
       <label>Status: <strong>{{getStatus(board.vistoria_feita)}}</strong></label>
     </ion-item>
     <ion-item>
-      <label>Cliente: <strong>MultiCar S/A</strong></label>
+      <label>Marca: <strong>{{board.marca_veiculo}}</strong></label>
+    </ion-item>
+    <ion-item>
+      <label>Modelo: <strong>{{board.modelo_veiculo}}</strong></label>
     </ion-item>
   </ion-card>
 
-  <ion-card padding-top *ngIf="schedulesChassi | async as chassi$">
+  <ion-card padding-top *ngIf="chassi && schedulesChassi | async as chassi$">
 
     <label class="text-center">Agendamento</label>
 
@@ -87,11 +88,14 @@
       <label>Status: <strong>{{getStatus(chassi$.vistoria_feita)}}</strong></label>
     </ion-item>
     <ion-item>
-      <label>Cliente: <strong>MultiCar S/A</strong></label>
+      <label>Marca: <strong>{{chassi$.marca_veiculo}}</strong></label>
+    </ion-item>
+    <ion-item>
+      <label>Modelo: <strong>{{chassi$.modelo_veiculo}}</strong></label>
     </ion-item>
   </ion-card>
 
-  <ion-card padding-top *ngIf="!board && !chassi && status && schedulesByStatusOpen | async as scheduleOpen">
+  <ion-card padding-top *ngIf="!board && !chassi && statusModel && schedulesByStatusOpen | async as scheduleOpen">
 
     <label class="text-center">Quantidade de agendamentos</label>
 
@@ -100,7 +104,7 @@
     </ion-item>
   </ion-card>
 
-  <ion-card padding-top *ngIf="!board && !chassi && !status && schedulesByStatusClosed | async as scheduleClosed">
+  <ion-card padding-top *ngIf="!board && !chassi && !statusModel && schedulesByStatusClosed | async as scheduleClosed">
 
     <label class="text-center">Quantidade de agendamentos</label>
 

@@ -3,6 +3,7 @@ import { IonicPageModule } from 'ionic-angular';
 
 import { ConsultInspectPage } from './consult-inspect';
 import { ConsultInspectDetailsPageModule } from '../consult-inspect-details/consult-inspect-details.module';
+import { ConsultInspectService } from './consult-inspect.service';
 
 @NgModule({
   declarations: [
@@ -12,5 +13,6 @@ import { ConsultInspectDetailsPageModule } from '../consult-inspect-details/cons
     ConsultInspectDetailsPageModule,
     IonicPageModule.forChild(ConsultInspectPage),
   ],
+  providers: [ConsultInspectService]
 })
 export class ConsultInspectPageModule {}

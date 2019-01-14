@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 
 import { ConsultInspectDetailsPage } from '../consult-inspect-details/consult-inspect-details';
 import { LoadingService } from '../../app/loading/loading.service';
+import { ConsultInspectService } from './consult-inspect.service';
+import { Observable } from 'rxjs';
 
 @IonicPage({
   name: 'consult-inspect'
@@ -41,10 +43,57 @@ export class ConsultInspectPage {
     },
   ];
 
+  data: any;
+  errorMessage: string;
+  page = 1;
+  perPage = 0;
+  totalData = 0;
+  totalPage = 0;
+
+  items = [];
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public modalCtrl: ModalController,
-              private loadingService: LoadingService) {}
+              private loadingService: LoadingService,
+              private consultInspectService: ConsultInspectService) {
+
+    this.getInspects();
+  }
+
+  getInspects() {
+    this.consultInspectService.getInspects().subscribe(res => {
+      this.data = res;
+
+      console.log(this.data);
+      if (this.data.length >= 15) {
+        for (let i = 0; i < 15; i++) {
+          this.items.push(this.data[i]);
+        }
+      } else {
+        this.items = this.data;
+      }
+
+    }, error => (this.errorMessage = <any>error));
+
+  }
+
+  doInfinite(infiniteScroll) {
+
+    const total = this.items.length + 15;
+    setTimeout(() => {
+
+      for (let i = this.items.length; i < total; i++) {
+        if (this.data[i]) {
+          this.items.push( this.data[i] );
+          this.page += 1;
+        }
+      }
+
+      console.log('Async operation has ended');
+      infiniteScroll.complete();
+    }, 1000);
+  }
 
   ionViewDidLoad() {
     this.loadingService.show();

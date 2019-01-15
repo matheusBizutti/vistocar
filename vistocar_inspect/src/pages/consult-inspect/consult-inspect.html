@@ -6,33 +6,25 @@
 
 </ion-header>
 
-
 <ion-content padding>
 
-  <!-- <ion-row>
+  <ion-row>
     <ion-col>
       <ion-list>
-        <ion-item *ngFor="let inspect of inspects;">
-          <h2 padding-top>Placa: {{ inspect.board }}</h2>
-          <p>Tipo de vistoria: {{ inspect.inspectType }} - {{ inspect.status }}</p>
+        <ion-item *ngFor="let inspect of items;">
+          <h2 padding-top>Placa: {{ inspect.placa }}</h2>
+          <p>Status: - {{ setStatusOfInspect(inspect.vistoria_feita) }}</p>
           <button ion-button clear item-end (click)="details();" class="button-font-text">Visualizar</button>
         </ion-item>
       </ion-list>
     </ion-col>
-  </ion-row> -->
+  </ion-row>
 
-  <ion-content>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Carregando...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 
-    <ion-list>
-      <ion-item *ngFor="let i of items">{{i.chassi}}</ion-item>
-    </ion-list>
-
-    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
-      <ion-infinite-scroll-content
-        loadingSpinner="bubbles"
-        loadingText="Carregando...">
-      </ion-infinite-scroll-content>
-    </ion-infinite-scroll>
-
-   </ion-content>
 </ion-content>

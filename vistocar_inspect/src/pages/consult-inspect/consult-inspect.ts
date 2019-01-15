@@ -4,7 +4,6 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 import { ConsultInspectDetailsPage } from '../consult-inspect-details/consult-inspect-details';
 import { LoadingService } from '../../app/loading/loading.service';
 import { ConsultInspectService } from './consult-inspect.service';
-import { Observable } from 'rxjs';
 
 @IonicPage({
   name: 'consult-inspect'
@@ -106,6 +105,10 @@ export class ConsultInspectPage {
   details() {
     const modal = this.modalCtrl.create(ConsultInspectDetailsPage, {testParam: 'AAA'});
     modal.present();
+  }
+
+  setStatusOfInspect(inspectType = '') {
+    return inspectType === '-1' ? 'Pendente' : 'Finalizado';
   }
 
 }

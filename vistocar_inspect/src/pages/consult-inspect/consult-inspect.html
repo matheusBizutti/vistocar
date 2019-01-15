@@ -13,7 +13,12 @@
       <ion-list>
         <ion-item *ngFor="let inspect of items;">
           <h2 padding-top>Placa: {{ inspect.placa }}</h2>
-          <p>Status: - {{ setStatusOfInspect(inspect.vistoria_feita) }}</p>
+          <p>
+            Status:
+              <ion-badge item-end>
+                {{ setStatusOfInspect(inspect.vistoria_feita) }}
+              </ion-badge>
+            </p>
           <button ion-button clear item-end (click)="details();" class="button-font-text">Visualizar</button>
         </ion-item>
       </ion-list>

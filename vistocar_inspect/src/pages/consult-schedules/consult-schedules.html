@@ -9,15 +9,19 @@
 <ion-content padding>
 
   <ion-card padding-bottom>
-    <ion-item>
-      <ion-label color="primary" stacked>Placa</ion-label>
-      <ion-input [disabled]="chassi !== ''" type="text" placeholder="JXS-0701" [(ngModel)]="board" name="board"></ion-input>
-    </ion-item>
+    <div class="input-container">
+      <ion-item>
+        <ion-label color="primary" stacked>Placa</ion-label>
+        <ion-input padding-right [disabled]="chassi !== ''" type="text" placeholder="JXS-0701" [(ngModel)]="board" name="board">
+        </ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label color="primary" stacked>Chassi</ion-label>
-      <ion-input [disabled]="board !== ''" type="text" placeholder="9BWZZZ377VT004251" [(ngModel)]="chassi" name="chassi"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label color="primary" stacked>Chassi</ion-label>
+        <ion-input [disabled]="board !== ''" type="text" placeholder="9BWZZZ377VT004251" [(ngModel)]="chassi" name="chassi"></ion-input>
+      </ion-item>
+
+    </div>
 
     <ion-row radio-group [(ngModel)]="status" no-padding>
       <ion-item>

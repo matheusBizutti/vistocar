@@ -15,7 +15,7 @@ export class ConsultSchedulesPage {
 
   board: string = '';
   chassi: string = '';
-  status: string;
+  status: string = 'false';
   statusModel: boolean = true;
   schedulesBoard;
   schedulesChassi;
@@ -39,8 +39,6 @@ export class ConsultSchedulesPage {
   filter () {
 
     if (!this.board && !this.chassi) {
-
-      console.log(this.status);
 
       this.status === 'true' ? this.statusModel = true : this.statusModel = false;
 

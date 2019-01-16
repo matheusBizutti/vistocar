@@ -47,7 +47,6 @@ export class ConsultSchedulesPage {
     } else {
 
       if (this.board) {
-        console.log('entrei tiozao;');
         this.schedulesBoard = this.getSchedulesBoard();
       } else if (this.chassi) {
         this.schedulesChassi = this.getScheduleChassi();

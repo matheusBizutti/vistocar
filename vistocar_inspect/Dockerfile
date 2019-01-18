@@ -20,4 +20,4 @@ COPY . /usr/src/app
 EXPOSE 8200
 
 # Serve the app
-CMD ["npm", "start"]
+CMD ["npm", "run", "start-lab"]

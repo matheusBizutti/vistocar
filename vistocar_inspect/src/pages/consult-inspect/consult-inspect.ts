@@ -64,7 +64,6 @@ export class ConsultInspectPage {
     this.consultInspectService.getInspects().subscribe(res => {
       this.data = res;
 
-      console.log(this.data);
       if (this.data.length >= 15) {
         for (let i = 0; i < 15; i++) {
           this.items.push(this.data[i]);
@@ -89,7 +88,6 @@ export class ConsultInspectPage {
         }
       }
 
-      console.log('Async operation has ended');
       infiniteScroll.complete();
     }, 1000);
   }
@@ -102,8 +100,8 @@ export class ConsultInspectPage {
     this.loadingService.hide();
   }
 
-  details() {
-    const modal = this.modalCtrl.create(ConsultInspectDetailsPage, {testParam: 'AAA'});
+  details(inspect = {}) {
+    const modal = this.modalCtrl.create(ConsultInspectDetailsPage, {inspect: inspect});
     modal.present();
   }
 

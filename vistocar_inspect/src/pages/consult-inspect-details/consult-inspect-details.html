@@ -14,20 +14,32 @@
 <ion-content padding>
 
     <ion-card>
+      <!-- <ion-item>
+        <label>Cliente: <strong>{{getCustomer(inspect.cliente_id)}}</strong></label>
+      </ion-item> -->
       <ion-item>
-        <label>Placa: <strong>XJS-0701</strong></label>
+        <label>Placa: <strong>{{inspect.placa}}</strong></label>
       </ion-item>
       <ion-item>
-        <label>Tipo da vistoria: <strong>A</strong></label>
+        <label>Categoria: <strong>{{inspect.categoria}}</strong></label>
       </ion-item>
       <ion-item>
-        <label>Status dos dados: <strong>Transmitidos</strong></label>
+        <label>Renavam: <strong>{{inspect.renavam}}</strong></label>
       </ion-item>
       <ion-item>
-        <label>Status da imagem: <strong>Transmitida</strong></label>
+        <label>Chassi: <strong>{{inspect.chassi}}</strong></label>
       </ion-item>
       <ion-item>
-        <label>Cliente: <strong>MultiCar S/A</strong></label>
+        <label>Marca: <strong>{{inspect.marca_veiculo}}</strong></label>
+      </ion-item>
+      <ion-item>
+        <label>Modelo: <strong>{{inspect.modelo_veiculo}}</strong></label>
+      </ion-item>
+      <ion-item>
+        <label>Ano fabricação: <strong>{{inspect.ano_fab}}</strong></label>
+      </ion-item>
+      <ion-item>
+        <label>Modelo fabricação: <strong>{{inspect.modelo_fab}}</strong></label>
       </ion-item>
     </ion-card>
 

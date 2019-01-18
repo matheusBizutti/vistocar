@@ -10,8 +10,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ConsultInspectDetailsPage {
 
+  inspect = {};
+
   constructor(public navCtrl: NavController, public params: NavParams) {
-    console.log(params.get('testParam'));
+    this.inspect = params.get('inspect');
   }
 
   ionViewDidLoad() {

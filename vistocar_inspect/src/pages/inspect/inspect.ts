@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
 import { CameraOptions, Camera } from '@ionic-native/camera';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -15,12 +15,6 @@ import { LoadingService } from '../../app/loading/loading.service';
   templateUrl: 'inspect.html',
 })
 export class InspectPage {
-
-  // - checkbox ressalvas;
-  caveat01 = false;
-  caveat02 = false;
-  caveat03 = false;
-  caveat04 = false;
 
   // - imagens
   image = '';
@@ -48,10 +42,41 @@ export class InspectPage {
 
   inspect = 'vehicle';
 
+  auctions: Array<Object>;
+  boardCondition: Array<Object>;
+  caveat: Array<Object>;
+  caveatChecked: Array<Object> = [];
+  caveatDefault: Array<Object> = [];
+  chassis: Array<Object>;
+  colors: Array<Object>;
+  conditions: Array<Object>;
+  conditionsChecked: Array<Object> = [];
+  customers: Array<Object>;
+  engineers: Array<Object>;
+  equipment: Array<Object>;
+  equipmentChecked: Array<Object> = [];
+  exchanges: Array<Object>;
+  fuels: Array<Object>;
+  vehicleCategories: Array<Object>;
+  states: Object = {};
+
+  subscriptionAuction: Subscription;
+  subscriptionBoardCondition: Subscription;
+  subscriptionChassis: Subscription;
+  subscriptionCategories: Subscription;
+  subscriptionCategoriesFilter: Subscription;
+  subscriptionColors: Subscription;
+  subscriptionEngineers: Subscription;
+  subscriptionExchanges: Subscription;
+  subscriptionCustomers: Subscription;
+  subscriptionFuel: Subscription;
+  subscriptionStates: Subscription;
+
   inspectData = {
     customer: '',
     auction: '',
-    lotNumber: undefined ,
+    TaxId: '', // VER DEPOIS
+    lotnumber: undefined ,
     surveyType: '',
     vehiclecategory: '',
     servicetype: '',
@@ -67,33 +92,19 @@ export class InspectPage {
     chassicondition: '',
     exchangenumber: '',
     exchangenumberbin: '',
+    exchangenumbercondition: '',
     renavamnumber: undefined,
     kitgnv: false,
     vehiclebrand: '',
+    brachid: 0, // VER DEPOIS
+    branch: 'not use', // VER DEPOIS
     vehiclemodel: '',
     yearmodel: undefined,
     yearfabrication: undefined,
     color: '',
-    fuel: '',
+    fluel: '',
     observation: '',
-    caveat: [
-      {
-        description: 'Ausência de gravação em todos os vidros',
-        use: this.caveat01
-      },
-      {
-        description: 'Ausência parcial de numeração nos vidros',
-        use: this.caveat02
-      },
-      {
-        description: 'Veículo blindado',
-        use: this.caveat03
-      },
-      {
-        description: 'Vidro com num. do chassi sem vestígio de adulteração',
-        use: this.caveat04
-      }
-    ],
+    caveat: this.caveatDefault,
     pictures: [
       {
         id: '01',
@@ -203,29 +214,10 @@ export class InspectPage {
     ]
   }
 
-  auctions: Array<Object>;
-  boardCondition: Array<Object>;
-  chassis: Array<Object>;
-  colors: Array<Object>;
-  customers: Array<Object>;
-  engineers: Array<Object>;
-  fuels: Array<Object>;
-  vehicleCategories: Array<Object>;
-  states: Object = {};
-
-  subscriptionAuction: Subscription;
-  subscriptionBoardCondition: Subscription;
-  subscriptionChassis: Subscription;
-  subscriptionCategories: Subscription;
-  subscriptionColors: Subscription;
-  subscriptionEngineers: Subscription;
-  subscriptionCustomers: Subscription;
-  subscriptionFuel: Subscription;
-  subscriptionStates: Subscription;
-
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private camera: Camera,
+              private alertCtrl: AlertController,
               private domSanitizer: DomSanitizer,
               private inspectService: InspectService,
               private loadingService: LoadingService) {}
@@ -239,11 +231,28 @@ export class InspectPage {
       console.log(err);
     });
 
+    this.subscriptionCategoriesFilter = this.inspectService.getAccessories().subscribe(response => {
+      if (response) {
+        this.caveat = response.filter(e => e.aba === 'Ressalva');
+        this.equipment = response.filter(e => e.aba === 'Equipamentos');
+        this.conditions = response.filter(e => e.aba === 'Condições');
+
+        console.log('tem value? ', this.caveat, this.equipment, this.conditions);
+      }
+    })
+
     this.subscriptionFuel = this.inspectService.getFuel().subscribe(response => {
       this.fuels = [...response];
     }, err => {
       console.log(err);
     });
+
+    this.subscriptionExchanges = this.inspectService.getExchanges().subscribe(response => {
+      this.exchanges = [...response];
+    }, err => {
+      console.log(err);
+    });
+
 
     this.subscriptionAuction = this.inspectService.getAuction().subscribe(response => {
       this.auctions = [...response];
@@ -376,6 +385,7 @@ export class InspectPage {
         break;
       }
       case 'equipment': {
+        this.setCaveat();
         this.inspect = 'pictures';
         break;
       }
@@ -508,6 +518,73 @@ export class InspectPage {
      console.log(err);
     });
 
+  }
+
+  changeCheckboxStatus(item, event) {
+
+    const name = item.nome;
+
+    if (item.aba === 'Ressalva' && event.checked) {
+      this.caveatChecked.push(item);
+    } else if (item.aba === 'Ressalva' && !event.checked) {
+      this.caveatChecked = this.caveatChecked.filter(e => e['nome'] !== name);
+    }
+
+    if (item.aba === 'Condições' && event.checked) {
+      this.conditionsChecked.push(item);
+    } else if (item.aba === 'Condições' && !event.checked) {
+      this.conditionsChecked = this.conditionsChecked.filter(e => e['nome'] !== name);
+    }
+
+    if (item.aba === 'Equipamentos' && event.checked) {
+      this.equipmentChecked.push(item);
+    } else if (item.aba === 'Equipamentos' && !event.checked) {
+      this.equipmentChecked = this.equipmentChecked.filter(e => e['nome'] !== name);
+    }
+
+    console.log('items: ', this.equipmentChecked, this.caveatChecked, this.conditionsChecked);
+  }
+
+
+  setCaveat() {
+
+    const caveat = this.caveatChecked.map(e => ({id: e['id'], name: e['nome'], use: true}));
+    const equipments = this.equipmentChecked.map(e => ({id: e['id'], name: e['nome'], use: true}));
+    const conditions = this.conditionsChecked.map(e => ({id: e['id'], name: e['nome'], use: true}));
+
+    this.caveatDefault = caveat.concat(equipments).concat(conditions);
+    this.inspectData.caveat = this.caveatDefault;
+  }
+
+  save() {
+    this.inspectData.renavamnumber = Number(this.inspectData.renavamnumber);
+    this.inspectData.lotnumber = Number(this.inspectData.lotnumber);
+    this.inspectData.yearmodel = Number(this.inspectData.yearmodel);
+    this.inspectData.yearfabrication = Number(this.inspectData.yearfabrication);
+    console.log(JSON.stringify(this.inspectData));
+
+    this.loadingService.show();
+
+    this.inspectService.setReceiving(this.inspectData).subscribe(response => {
+      console.log(response);
+      let alert = this.alertCtrl.create({
+        title: 'Inclusão de vistoria efetuada com sucesso.',
+        subTitle: '',
+        buttons: ['Fechar']
+      });
+      alert.present();
+      this.loadingService.hide();
+
+      this.navCtrl.push('home');
+    }, err => {
+      let alert = this.alertCtrl.create({
+        title: 'Não foi possível efetuar a vistoria com os dados fornecidos.',
+        subTitle: 'Por favor, verifique o processo de preenchimento dos dados.',
+        buttons: ['Fechar']
+      });
+      alert.present();
+      this.loadingService.hide();
+    });
   }
 
 }

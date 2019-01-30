@@ -58,5 +58,13 @@ export class InspectService {
     return this.http.get(this.baseUrl.getBaseUrl() + 'getAllCustomers');
   }
 
+  getAccessories() : Observable<any> {
+    return this.http.get(this.baseUrl.getBaseUrl() + 'getAccessories/0')
+  }
+
+  setReceiving(body = {}): Observable<any> {
+    return this.http.post(this.baseUrl.getBaseUrl() + 'setReceiving', body);
+  }
+
 }
 

@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { DomSanitizer } from '@angular/platform-browser';
 
 import { CameraOptions, Camera } from '@ionic-native/camera';
-import { DomSanitizer } from '@angular/platform-browser';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+
 import { Subscription } from 'rxjs';
+
 import { InspectService } from './inspect.service';
 import { LoadingService } from '../../app/loading/loading.service';
 
@@ -66,6 +69,7 @@ export class InspectPage {
   subscriptionCategories: Subscription;
   subscriptionCategoriesFilter: Subscription;
   subscriptionColors: Subscription;
+  subscriptionDisconnect: Subscription;
   subscriptionEngineers: Subscription;
   subscriptionExchanges: Subscription;
   subscriptionCustomers: Subscription;
@@ -218,6 +222,7 @@ export class InspectPage {
               public navParams: NavParams,
               private camera: Camera,
               private alertCtrl: AlertController,
+              private storage: Storage,
               private domSanitizer: DomSanitizer,
               private inspectService: InspectService,
               private loadingService: LoadingService) {}
@@ -227,72 +232,116 @@ export class InspectPage {
     this.loadingService.show();
     this.subscriptionColors = this.inspectService.getColors().subscribe(response => {
       this.colors = [...response];
+
+      this.storage.set('colors', this.colors);
     }, err => {
-      console.log(err);
+      this.storage.get('colors').then(val => { this.colors = val; });
     });
 
     this.subscriptionCategoriesFilter = this.inspectService.getAccessories().subscribe(response => {
       if (response) {
         this.caveat = response.filter(e => e.aba === 'Ressalva');
-        this.equipment = response.filter(e => e.aba === 'Equipamentos');
-        this.conditions = response.filter(e => e.aba === 'Condições');
+        this.storage.set('caveat', this.caveat);
 
-        console.log('tem value? ', this.caveat, this.equipment, this.conditions);
+        this.equipment = response.filter(e => e.aba === 'Equipamentos');
+        this.storage.set('equipment', this.equipment);
+
+        this.conditions = response.filter(e => e.aba === 'Condições');
+        this.storage.set('conditions', this.conditions);
       }
-    })
+    });
+
+    if (!window.navigator.onLine) {
+
+      console.log('sem rede....');
+      this.storage.get('caveat').then(val => { this.caveat = val; });
+      this.storage.get('equipment').then(val => { this.equipment = val; });
+      this.storage.get('conditions').then(val => { this.conditions = val; });
+    };
 
     this.subscriptionFuel = this.inspectService.getFuel().subscribe(response => {
       this.fuels = [...response];
+
+      this.storage.set('fuels', this.fuels);
     }, err => {
-      console.log(err);
+     this.storage.get('fuels').then(val => { this.fuels = val; });
     });
 
     this.subscriptionExchanges = this.inspectService.getExchanges().subscribe(response => {
       this.exchanges = [...response];
+
+      this.storage.set('exchanges', this.exchanges);
     }, err => {
-      console.log(err);
+      this.storage.get('exchanges').then(val => { this.exchanges = val; });
     });
 
 
     this.subscriptionAuction = this.inspectService.getAuction().subscribe(response => {
       this.auctions = [...response];
+
+      this.storage.set('auctions', this.auctions);
     }, err => {
+
+      this.storage.get('auctions').then(val => { this.auctions = val; });
       console.log(err);
     });
 
     this.subscriptionCustomers = this.inspectService.getCustomers().subscribe(response => {
       this.customers = [...response];
+
+      this.storage.set('customers', this.customers);
     }, err => {
+      this.storage.get('customers').then(val => { this.customers = val; });
       console.log(err);
     });
 
     this.subscriptionCategories = this.inspectService.getVehicleCategory().subscribe(response => {
       this.vehicleCategories = [...response];
+
+      this.storage.set('vehicleCategories', this.vehicleCategories);
     }, err => {
+
+      this.storage.get('vehicleCategories').then(val => { this.vehicleCategories = val; });
       console.log(err);
     });
 
     this.subscriptionBoardCondition = this.inspectService.getBoardCondition().subscribe(response => {
       this.boardCondition = [...response];
+
+      this.storage.set('boardCondition', this.boardCondition);
     }, err => {
+
+      this.storage.get('boardCondition').then(val => { this.boardCondition = val; });
       console.log(err);
     });
 
     this.subscriptionStates = this.inspectService.getStates().subscribe(response => {
       this.states = response;
+
+      this.storage.set('states', this.states);
     }, err => {
+
+      this.storage.get('states').then(val => { this.states = val; });
       console.log(err);
     });
 
     this.subscriptionEngineers = this.inspectService.getEngineers().subscribe(response => {
       this.engineers = [...response];
+
+      this.storage.set('engineers', this.engineers);
     }, err => {
+
+      this.storage.get('engineers').then(val => { this.engineers = val; });
       console.log(err);
     });
 
     this.subscriptionChassis = this.inspectService.getChassis().subscribe(response => {
       this.chassis = [...response];
+
+      this.storage.set('chassis', this.chassis);
     }, err => {
+
+      this.storage.get('chassis').then(val => { this.chassis = val; });
       console.log(err);
     });
 
@@ -401,11 +450,7 @@ export class InspectPage {
   }
 
   getKeys(keys) {
-    return Object.keys(keys);
-  }
-
-  selectChange(e) {
-    console.log(e);
+    return keys ? Object.keys(keys) : [];
   }
 
   setImage(image, imageData) {
@@ -542,7 +587,6 @@ export class InspectPage {
       this.equipmentChecked = this.equipmentChecked.filter(e => e['nome'] !== name);
     }
 
-    console.log('items: ', this.equipmentChecked, this.caveatChecked, this.conditionsChecked);
   }
 
 

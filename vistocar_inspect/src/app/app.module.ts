@@ -3,10 +3,11 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 
+import { Camera } from '@ionic-native/camera';
+import { IonicStorageModule } from '@ionic/storage';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import { Camera } from '@ionic-native/camera';
 
 import { MyApp } from './app.component';
 import { LoginPageModule } from '../pages/login/login.module';
@@ -33,6 +34,10 @@ import { ConsultSchedulesPageModule } from '../pages/consult-schedules/consult-s
     InterceptorModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot({
+      name: '__mydb',
+      driverOrder: ['indexeddb', 'sqlite', 'websql']
+    }),
     InspectPageModule,
     ConsultInspectPageModule,
     ConsultSchedulesPageModule

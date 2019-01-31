@@ -1,16 +1,20 @@
-ARG  NODE_VERSION=alpine
+ARG NODE_VERSION=11-alpine
 FROM node:${NODE_VERSION}
 
-# install dependencies
-WORKDIR /opt/app
-COPY package.json package-lock.json* ./
-RUN npm cache clean --force && npm install
+# Copy dependency definitions
+ADD ["package*.json", "/sources/"]
 
-# copy app source to image _after_ npm install so that
-# application code changes don't bust the docker cache of npm install step
-COPY . /opt/app
+# Change directory so that our commands run inside this new directory
+WORKDIR /sources/
 
-# set application PORT and expose docker PORT, 80 is what Elastic Beanstalk expects
-EXPOSE 8080
+# Install dependecies
+RUN npm ci
 
-CMD [ "npm", "run", "start-lab" ]
+# Get all the code needed to run the app
+ADD . /sources/
+
+# Expose the port the app runs in
+EXPOSE 8100 8200
+
+# Serve the app
+CMD ["npm", "run", "start-lab"]

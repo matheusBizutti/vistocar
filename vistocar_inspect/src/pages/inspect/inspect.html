@@ -29,7 +29,7 @@
         <ion-col>
           <ion-item no-padding>
             <ion-label stacked>Nr. lote</ion-label>
-            <ion-input [(ngModel)]="inspectData.lotNumber" type="number"></ion-input>
+            <ion-input [(ngModel)]="inspectData.lotnumber" type="number"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -81,6 +81,8 @@
             </ion-select>
           </ion-item>
         </ion-col>
+      </ion-row>
+      <ion-row>
         <ion-col>
           <ion-item no-padding>
             <ion-label stacked>Placa</ion-label>
@@ -163,10 +165,18 @@
         </ion-col>
       </ion-row>
       <ion-row>
+          <ion-item no-padding>
+            <ion-label stacked>Condição do câmbio</ion-label>
+            <ion-select [(ngModel)]="inspectData.exchangenumbercondition">
+              <ion-option *ngFor="let exchange of exchanges" [value]="exchange.nome">{{exchange.nome}}</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-row>
+      <ion-row>
         <ion-col>
           <ion-item no-padding>
             <ion-label stacked>Nr. Renavam</ion-label>
-            <ion-input [(ngModel)]="inspectData.renavamnumber" type="number"></ion-input>
+            <ion-input [(ngModel)]="inspectData.renavamnumber" type="number" pattern="[0-9]*"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -226,13 +236,13 @@
       <ion-row>
         <ion-item no-padding>
           <ion-label stacked>Combustivel</ion-label>
-          <ion-select [(ngModel)]="inspectData.fuel">
+          <ion-select [(ngModel)]="inspectData.fluel">
             <ion-option *ngFor="let fuel of fuels" [value]="fuel.nome">{{fuel.nome}} </ion-option>
           </ion-select>
         </ion-item>
       </ion-row>
       <ion-row>
-        <ion-textarea placeholder="Observações"></ion-textarea>
+        <ion-textarea  [(ngModel)]="inspectData.observation" placeholder="Observações"></ion-textarea>
       </ion-row>
       <ion-row padding-top>
         <button ion-button block large (click)="navigate();">Próximo</button>
@@ -246,24 +256,9 @@
 
       <ion-list padding-top>
 
-        <ion-item no-padding>
-          <ion-label stacked>Ausência de gravação em todos os vidros</ion-label>
-          <ion-checkbox [(ngModel)]="caveat01"></ion-checkbox>
-        </ion-item>
-
-        <ion-item no-padding>
-          <ion-label stacked>Ausência parcial de numeração nos vidros</ion-label>
-          <ion-checkbox [(ngModel)]="caveat02"></ion-checkbox>
-        </ion-item>
-
-        <ion-item no-padding>
-          <ion-label stacked>Veículo blindado</ion-label>
-          <ion-checkbox [(ngModel)]="caveat03"></ion-checkbox>
-        </ion-item>
-
-        <ion-item no-padding>
-          <ion-label stacked>Vidro com num. do chassi sem vestígio de adulteração</ion-label>
-          <ion-checkbox [(ngModel)]="caveat04"></ion-checkbox>
+        <ion-item no-padding *ngFor="let item of caveat;">
+          <ion-label stacked>{{ item.nome }}</ion-label>
+          <ion-checkbox (ionChange)="changeCheckboxStatus(item, $event)"></ion-checkbox>
         </ion-item>
 
       </ion-list>
@@ -281,24 +276,9 @@
 
       <ion-list padding-top>
 
-        <ion-item no-padding>
-          <ion-label stacked>Ausência de gravação em todos os vidros</ion-label>
-          <ion-checkbox [(ngModel)]="caveat01"></ion-checkbox>
-        </ion-item>
-
-        <ion-item no-padding>
-          <ion-label stacked>Ausência parcial de numeração nos vidros</ion-label>
-          <ion-checkbox [(ngModel)]="caveat02"></ion-checkbox>
-        </ion-item>
-
-        <ion-item no-padding>
-          <ion-label stacked>Veículo blindado</ion-label>
-          <ion-checkbox [(ngModel)]="caveat03"></ion-checkbox>
-        </ion-item>
-
-        <ion-item no-padding>
-          <ion-label stacked>Vidro com num. do chassi sem vestígio de adulteração</ion-label>
-          <ion-checkbox [(ngModel)]="caveat04"></ion-checkbox>
+        <ion-item no-padding *ngFor="let item of conditions;">
+          <ion-label stacked>{{ item.nome }}</ion-label>
+          <ion-checkbox (ionChange)="changeCheckboxStatus(item, $event)"></ion-checkbox>
         </ion-item>
 
       </ion-list>
@@ -316,24 +296,9 @@
 
       <ion-list padding-top>
 
-        <ion-item no-padding>
-          <ion-label stacked>Ausência de gravação em todos os vidros</ion-label>
-          <ion-checkbox [(ngModel)]="caveat01"></ion-checkbox>
-        </ion-item>
-
-        <ion-item no-padding>
-          <ion-label stacked>Ausência parcial de numeração nos vidros</ion-label>
-          <ion-checkbox [(ngModel)]="caveat02"></ion-checkbox>
-        </ion-item>
-
-        <ion-item no-padding>
-          <ion-label stacked>Veículo blindado</ion-label>
-          <ion-checkbox [(ngModel)]="caveat03"></ion-checkbox>
-        </ion-item>
-
-        <ion-item no-padding>
-          <ion-label stacked>Vidro com num. do chassi sem vestígio de adulteração</ion-label>
-          <ion-checkbox [(ngModel)]="caveat04"></ion-checkbox>
+        <ion-item no-padding *ngFor="let item of equipment;">
+          <ion-label stacked>{{ item.nome }}</ion-label>
+          <ion-checkbox (ionChange)="changeCheckboxStatus(item, $event)"></ion-checkbox>
         </ion-item>
 
       </ion-list>
@@ -671,7 +636,7 @@
       </ion-row>
 
       <ion-row>
-        <button ion-button block large>Finalizar</button>
+        <button ion-button block large (click)="save();">Finalizar</button>
       </ion-row>
 
     </div>

@@ -14,18 +14,18 @@
 <ion-content padding>
 
     <ion-card>
-      <!-- <ion-item>
-        <label>Cliente: <strong>{{getCustomer(inspect.cliente_id)}}</strong></label>
-      </ion-item> -->
+      <ion-item>
+        <label>Cliente: <strong>{{inspect.client_data.nome}}</strong></label>
+      </ion-item>
       <ion-item>
         <label>Placa: <strong>{{inspect.placa}}</strong></label>
       </ion-item>
       <ion-item>
         <label>Categoria: <strong>{{inspect.categoria}}</strong></label>
       </ion-item>
-      <ion-item>
+      <!-- <ion-item>
         <label>Renavam: <strong>{{inspect.renavam}}</strong></label>
-      </ion-item>
+      </ion-item> -->
       <ion-item>
         <label>Chassi: <strong>{{inspect.chassi}}</strong></label>
       </ion-item>
@@ -40,6 +40,12 @@
       </ion-item>
       <ion-item>
         <label>Modelo fabricação: <strong>{{inspect.modelo_fab}}</strong></label>
+      </ion-item>
+      <ion-item>
+        <label>Cor: <strong>{{inspect.cor.nome}}</strong></label>
+      </ion-item>
+      <ion-item>
+        <label>Combustível: <strong>{{inspect.combustivel.nome}}</strong></label>
       </ion-item>
     </ion-card>
 

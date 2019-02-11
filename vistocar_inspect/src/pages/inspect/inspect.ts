@@ -600,7 +600,7 @@ export class InspectPage {
     this.inspectData.caveat = this.caveatDefault;
   }
 
-  save() {
+  async save() {
     this.inspectData.renavamnumber = Number(this.inspectData.renavamnumber);
     this.inspectData.lotnumber = Number(this.inspectData.lotnumber);
     this.inspectData.yearmodel = Number(this.inspectData.yearmodel);
@@ -609,26 +609,51 @@ export class InspectPage {
 
     this.loadingService.show();
 
-    this.inspectService.setReceiving(this.inspectData).subscribe(response => {
-      console.log(response);
-      let alert = this.alertCtrl.create({
-        title: 'Inclusão de vistoria efetuada com sucesso.',
-        subTitle: '',
-        buttons: ['Fechar']
-      });
-      alert.present();
-      this.loadingService.hide();
+    if(window.navigator.onLine) {
 
-      this.navCtrl.push('home');
-    }, err => {
-      let alert = this.alertCtrl.create({
-        title: 'Não foi possível efetuar a vistoria com os dados fornecidos.',
-        subTitle: 'Por favor, verifique o processo de preenchimento dos dados.',
-        buttons: ['Fechar']
+      this.inspectService.setReceiving(this.inspectData).subscribe(response => {
+        console.log(response);
+        let alert = this.alertCtrl.create({
+          title: 'Inclusão de vistoria efetuada com sucesso.',
+          subTitle: '',
+          buttons: ['Fechar']
+        });
+        alert.present();
+        this.loadingService.hide();
+
+        this.navCtrl.push('home');
+      }, err => {
+        let alert = this.alertCtrl.create({
+          title: 'Não foi possível efetuar a vistoria com os dados fornecidos.',
+          subTitle: 'Por favor, verifique o processo de preenchimento dos dados.',
+          buttons: ['Fechar']
+        });
+        alert.present();
+        this.loadingService.hide();
       });
-      alert.present();
-      this.loadingService.hide();
-    });
+    } else {
+        let alert = this.alertCtrl.create({
+          title: 'Dispositivo não possui acesso a internet.',
+          subTitle: 'A vistoria será salva, e assim que o dispositivo obter acesso a internet, a vistoria será incluida, fique tranquilo.',
+          buttons: ['Fechar']
+        });
+        alert.present();
+        this.loadingService.hide();
+        let storageInspect = [];
+
+        storageInspect.push(this.inspectData);
+        let existsData;
+
+        existsData = await this.storage.get('inspectPost');
+        if (existsData) {
+          for (let i in existsData) {
+            storageInspect.push(existsData[i])
+;          }
+        };
+        this.storage.set('inspectPost', storageInspect);
+        this.navCtrl.push('home');
+    }
+
   }
 
 }

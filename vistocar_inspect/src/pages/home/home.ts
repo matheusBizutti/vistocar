@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
-import { NavController, IonicPage } from 'ionic-angular';
+import { NavController, IonicPage, AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 import { AuthService } from '../../app/auth/auth.service';
+import { InspectService } from '../inspect/inspect.service';
 
 @IonicPage({
   name: 'home'
@@ -14,11 +15,35 @@ import { AuthService } from '../../app/auth/auth.service';
 })
 export class HomePage {
 
-  // inspect: string;
-
   constructor(public navCtrl: NavController,
               private authService: AuthService,
-              private storage: Storage) {}
+              private storage: Storage,
+              private inspectService: InspectService,
+              private alertCtrl: AlertController) {
+  }
+
+  async ionViewCanEnter() {
+    const data = await this.storage.get('inspectPost');
+
+    if (navigator.onLine && data) {
+
+      for(let i in data) {
+        this.inspectService.setReceiving(data[i]).subscribe(response => {
+          console.log(response);
+        }, err => {
+          console.log(err);
+        });
+      }
+
+      this.storage.remove('inspectPost');
+      let alert = this.alertCtrl.create({
+        title: 'Sinal de rede recebido.',
+        subTitle: 'A(s) vistoria(s) que estava(m) aguardando rede, foi/foram enviada(s).',
+        buttons: ['Fechar']
+      });
+      alert.present();
+    }
+  }
 
   consultInspect() {
     this.navCtrl.push('consult-inspect');
